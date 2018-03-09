@@ -10,7 +10,7 @@ export class ArticleService {
   private articlesListObs = new BehaviorSubject<Array<Article>>([]);
 
   constructor(private httpService: HttpService) {
-    
+    this.init();
   }
 
   init() {

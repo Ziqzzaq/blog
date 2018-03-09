@@ -17,7 +17,7 @@ export class HttpService {
 
 
   getArticles(): Observable<Array<Article>> {
-   return this.http.get<Array<Article>>(this.URL_DB, { params: this.param });
+    return this.http.get<Array<Article>>(this.URL_DB, { params: this.param });
   }
 
   saveArticles(article: Article) {

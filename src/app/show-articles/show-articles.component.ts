@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from '../models/article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-show-articles',
   templateUrl: './show-articles.component.html',
   styleUrls: ['./show-articles.component.css']
 })
-export class ShowArticlesComponent implements OnInit {
+export class ShowArticlesComponent implements OnInit{
 
-  constructor() { }
+  articlesList: Array<Article> = [];
 
-  ngOnInit() {
+  constructor(private articleService: ArticleService) {
+    this.articleService.getArticlesListObs().subscribe((articles: Array<Article>) => {
+      this.articlesList = articles;
+      console.log(this.articlesList);
+    });
+  }
+
+  ngOnInit(){
   }
 
 }

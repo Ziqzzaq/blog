@@ -3,6 +3,7 @@ import { FormGroup, FormArray, FormControl } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ArticleService } from '../services/article.service';
 import { Article } from '../models/article';
+import { Routes, Router } from '@angular/router';
 @Component({
   selector: 'app-add-article',
   templateUrl: './add-article.component.html',
@@ -18,7 +19,7 @@ export class AddArticleComponent implements OnInit {
   content:string = '';
   titleAlert:string = 'This field is required & You must specify a content more than 3 characters.';
 
-  constructor(private articleService: ArticleService, private fb: FormBuilder) {
+  constructor(private articleService: ArticleService, private fb: FormBuilder, private router: Router) {
 
     this.rForm = fb.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
@@ -41,6 +42,7 @@ export class AddArticleComponent implements OnInit {
   addPost() {
     const article = this.createArticle();
     this.articleService.add(article);
+    this.router.navigate(['./showArticles']);
   }
 
 }
