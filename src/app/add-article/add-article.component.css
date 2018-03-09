@@ -1,0 +1,48 @@
+form {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+form .form-heading {
+	margin-bottom: 20px;
+	text-align: center;
+}
+form .form-control {
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.alert {
+    background: #f2edda;
+    padding: 7px;
+    font-size: .9em;
+    margin-bottom: 20px;
+    display: block;
+    animation: 2s alertAnim forwards;
+}
+
+.button {
+    margin-top: 3rem;
+}
+h1 {
+    margin-bottom: 2rem;
+    font-weight:bold;
+    font-family:'Muli';
+    font-size: 2em;
+}
+
+
+@keyframes alertAnim {
+    from {
+        opacity:0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
+}

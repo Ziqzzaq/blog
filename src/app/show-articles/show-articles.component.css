@@ -1,0 +1,97 @@
+div.content h1{
+    font-size: 35px;
+    font-weight: 100;
+    margin: 5px 0 15px;
+  }
+  div.content p{
+    color: #888;
+    font-size: 18px;
+    margin: 10px auto;
+    width: 90%;
+    text-align: left;
+    line-height: 22.5px;
+  }
+  div.content{
+    height: auto;
+    width: 50%;
+    top: 30px;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    padding-bottom: 70px;
+    margin: 15px auto;
+    color: #555;
+    background-color: #fff;
+    background-color: rgba(255,255,255,1);
+    z-index: 20;
+    font-family: Source Sans Pro;
+    perspective: 400px;
+    transform: perspective(400px);
+    transition: 1s ease;
+  }
+  div.content:before{
+    position: absolute;
+    height: 100%;
+    width: 30px;
+    top: -2%;
+    left: -30px;
+    content : " ";
+    display: block;
+    z-index: 200; 
+    background: url("http://al2015.gatesnotesazure.com/assets/media/images/top-shadow-left.png") no-repeat;
+  }
+  div.content:after{
+    position: absolute;
+    height: 100%;
+    width: 30px;
+    top: -2%;
+    right: -30px;
+    content : " ";
+    z-index: 200;
+    background: url("http://al2015.gatesnotesazure.com/assets/media/images/top-shadow-right.png") no-repeat;
+  }
+  div.share-widget{
+    position: absolute;
+    left: 10px;
+    bottom: -10px;
+    padding: 7px;
+    font-size: 18px;
+    font-family: Lato;
+    color: #555;
+    background-color: rgba(0,0,0,0.02);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.03);
+    border-radius: 2.5px;
+    transform: perspective(400px) rotateX(90deg);
+    transition: 0.5s ease;
+    opacity: 0;
+  }
+  div.share-widget span.fa{
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: #555;
+    background-color: #068f6d;
+    font-size: 20px;
+    transition: 0.2s ease-in;
+    cursor: pointer;
+  }
+  div.share-widget span.fa:hover{
+    color: #222;
+    background-color: #14659b;
+  }
+  div.content:hover div.share-widget{
+    transform: rotateX(0deg) translateY(-20px);
+      -moz-transform: rotateX(0deg) translateY(-20px);
+    opacity: 1;
+  }
+  
+  
+  
+  div.band{
+    width: 100%;
+    height: 50px;
+    background-color: rgba(0,0,0,0.05);
+    background-image: radial-gradient(circle,rgba(0,0,0,0.19),rgba(255,255,255,0.3));
+    box-shadow: 0 1px #ddd;
+  }
