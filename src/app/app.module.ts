@@ -8,7 +8,7 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { AppRoutingModule } from './app.routing.module';
 import { ShowArticlesComponent } from './show-articles/show-articles.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AsyncLocalStorageModule
   ],
   providers: [HttpService,ArticleService],
   bootstrap: [AppComponent]

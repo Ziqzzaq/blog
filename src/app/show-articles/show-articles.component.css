@@ -65,7 +65,7 @@ div.content h1{
     transition: 0.5s ease;
     opacity: 0;
   }
-  div.share-widget span.fa{
+  span.fa{
     height: 35px;
     width: 35px;
     text-align: center;
@@ -76,7 +76,7 @@ div.content h1{
     transition: 0.2s ease-in;
     cursor: pointer;
   }
-  div.share-widget span.fa:hover{
+  span.fa:hover{
     color: #222;
     background-color: #14659b;
   }
@@ -88,4 +88,8 @@ div.content h1{
   
   div.created{
     float: right;
+  }
+  .fa-edit{
+    float: right;
+    border-radius: 20px;
   }

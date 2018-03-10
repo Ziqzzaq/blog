@@ -1,4 +1,5 @@
 <div class="content" *ngFor="let article of articlesList">
+  <span class="fa fa-edit" (click)="edit(article)"></span>
   <h1>{{article.name}}</h1>
   <div class="info">
     <p class="description">{{article.description}}</p>
