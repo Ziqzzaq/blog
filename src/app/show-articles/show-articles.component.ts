@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../models/article';
 import { ArticleService } from '../services/article.service';
+import { AsyncLocalStorage } from 'angular-async-local-storage';
 
 @Component({
   selector: 'app-show-articles',
@@ -11,9 +12,12 @@ export class ShowArticlesComponent implements OnInit{
 
   articlesList: Array<Article> = [];
 
-  constructor(private articleService: ArticleService) {
+  constructor(private articleService: ArticleService, protected storage: AsyncLocalStorage) {
     this.articleService.getArticlesListObs().subscribe((articles: Array<Article>) => {
       this.articlesList = articles;
+      this.storage.setItem('articles',articles).subscribe(() => {
+      }, () => {
+      });
       //console.log(this.articlesList);
     });
   }
@@ -23,5 +27,9 @@ export class ShowArticlesComponent implements OnInit{
 
   edit(article: Article) {
     this.articleService.saveLocalArticle(article);
+  } 
+
+  delete(article: Article) {
+    this.articleService.delete(article);
   }
 }

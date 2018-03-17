@@ -89,7 +89,7 @@ div.content h1{
   div.created{
     float: right;
   }
-  .fa-edit{
+  .fa-edit, .fa-trash{
     float: right;
     border-radius: 20px;
   }

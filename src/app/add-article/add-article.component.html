@@ -13,16 +13,13 @@
         <small class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched">You must specify a description that's between 10 and 40 characters.</small>
       </div>
       <div class="form-group">
-          <label>Content
-            <textarea class="form-control" formControlName="content" [value]=this.artContent></textarea>
-          </label>
-          <small class="alert" *ngIf="!rForm.controls['content'].valid && rForm.controls['content'].touched">You must specify a content that's between 30 and 500 characters.</small>
+        <textarea [froalaEditor] formControlName="content" [(froalaModel)]="this.artContent"></textarea>
+        <small class="alert" *ngIf="!rForm.controls['content'].valid && rForm.controls['content'].touched">You must specify a content that's between 30 and 500 characters.</small>
       </div>
       <input type="submit" class="btn btn-primary form-control" value="Submit Form" [disabled]="!rForm.valid">
     </div>
   </form>
 </div>
-
 
 <ng-template #forminfo>
   <div class="form-container">

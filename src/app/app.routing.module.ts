@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'showArticles',
-        component: ShowArticlesComponent
+        component: ShowArticlesComponent,
     }
 ];
 

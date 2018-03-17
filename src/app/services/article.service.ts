@@ -10,8 +10,9 @@ import { Routes, Router } from '@angular/router';
 @Injectable()
 export class ArticleService {
   private articlesListObs = new BehaviorSubject<Array<Article>>([]);
-
+  private articleObs: Subject<Article>;
   constructor(private httpService: HttpService, protected storage: AsyncLocalStorage, private router: Router) {
+    this.articleObs = new Subject<Article>();
     this.init();
   }
 
@@ -38,7 +39,22 @@ export class ArticleService {
     });
   }
 
+  getArticle(): Observable<Article> {
+    return this.articleObs.asObservable();
+  }
+
+  setArticle(artId): void {
+    this.httpService.getArticleById(artId).subscribe(article => {
+    this.articleObs.next(article);
+    })
+  }
+
   getArticlesListObs(): Observable<Array<Article>> {
     return this.articlesListObs.asObservable();
   }
+
+  delete(artId) {
+    this.httpService.deleteArticle(artId);
+  }
+
 }

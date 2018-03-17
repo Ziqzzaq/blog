@@ -1,6 +1,7 @@
 <div class="content" *ngFor="let article of articlesList">
+  <span class="fa fa-trash" (click)="delete(article._id.$oid)"></span>
   <span class="fa fa-edit" (click)="edit(article)"></span>
-  <h1>{{article.name}}</h1>
+  <a [routerLink]="['/article', article._id.$oid]">{{article.name}}</a>
   <div class="info">
     <p class="description">{{article.description}}</p>
   </div>
@@ -15,3 +16,4 @@
     <span class="fa fa-tumblr"></span>
   </div>
 </div>
+

@@ -29,7 +29,7 @@ export class AddArticleComponent implements OnInit {
     this.rForm = fb.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
       'description': [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(40)])],
-      'content': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
+      'content':[null]
     })
 
     this.getArticle();
