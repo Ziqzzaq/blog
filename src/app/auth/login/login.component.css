@@ -1,0 +1,8 @@
+form{
+    margin: auto;
+    text-align: center;
+}
+input, button{
+    display: block;
+    margin : 0 auto;
+}

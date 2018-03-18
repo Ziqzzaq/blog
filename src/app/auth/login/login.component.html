@@ -1,5 +1,5 @@
 <form (ngSubmit)="login(formData)" #formData = "ngForm">
-  <div>
+  <div class="form-login">
     <label>Email</label>
     <input ngModel type="email" name="email" required>
 
@@ -7,6 +7,6 @@
     <input ngModel type="password" name="password" required>
 
     <button type="submit" [disabled]="formData.invalid">Log in</button>
-    <button type="button" [disabled]="formData.invalid">Registration</button>
+    <button type="button" [disabled]="formData.invalid" (click)="signup(formData)">Registration</button>
   </div>
 </form>
