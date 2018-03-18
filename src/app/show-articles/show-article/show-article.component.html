@@ -1,2 +1,4 @@
-<div class="content" [innerHTML]="this.article.content | innerHtml"></div>
+<div>{{this.article.name}}</div>
+<div>{{this.article.description}}</div>
+<div [innerHTML]="this.article.content | innerHtml"></div>
 <div> Author: {{this.article.userName}}</div>

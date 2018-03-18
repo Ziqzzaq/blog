@@ -1,7 +1,4 @@
-<form class="form-inline my-2 my-lg-0">
-  <input [(ngModel)]="term" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2" type="search" placeholder="Search articles" aria-label="Search">
-</form>
-<div class="content" *ngFor="let article of articlesList | filter:term">
+<div class="content" *ngFor="let article of articlesList">
   <span *ngIf="authService.user" class="fa fa-trash" (click)="delete(article._id.$oid)"></span>
   <span  *ngIf="authService.user" class="fa fa-edit" (click)="edit(article)"></span>
   <a [routerLink]="['/article', article._id.$oid]">{{article.name}}</a>
@@ -9,8 +6,7 @@
     <p class="description">{{article.description}}</p>
   </div>
   <div class="created">
-    Added: {{article.created}}, <br />
-    by: {{article.userName}}
+    Added: {{article.created}}
   </div>
   <div class="share-widget">
     Share :
