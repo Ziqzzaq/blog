@@ -1,24 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpService } from './services/http.service';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { HttpService } from './services/http.service'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { ArticleService } from './services/article.service'
 import { AuthService } from './auth/auth.service'
 import { AuthGuardsService } from './auth/auth-guards.service'
-import { AppComponent } from './app.component';
-import { AddArticleComponent } from './add-article/add-article.component';
+import { AppComponent } from './app.component'
 import { LoginComponent } from './auth/login/login.component'
-import { AddUserComponent } from './auth/add-user/add-user.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
-import { ProfileComponent } from './auth/profile/profile.component'
 import { AppRoutingModule } from './app.routing.module';
 import { ShowArticlesModule } from './show-articles/show-articles.module'
-import { HttpClientModule } from '@angular/common/http';
-import { AsyncLocalStorageModule } from 'angular-async-local-storage';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AdminModule } from './admin/admin.module'
+import { HttpClientModule } from '@angular/common/http'
+import { AsyncLocalStorageModule } from 'angular-async-local-storage'
+import { AngularFontAwesomeModule } from 'angular-font-awesome'
+import { AngularFireModule } from 'angularfire2'
+import { AngularFireAuthModule } from 'angularfire2/auth'
 
 const config = {
   apiKey: 'AIzaSyCYwMclrQ62cG0AXTkybVlm_aRvcy4JiWY',
@@ -32,23 +29,19 @@ const config = {
 @NgModule({
   declarations: [
     AppComponent,
-    AddArticleComponent,
     LoginComponent,
-    AddUserComponent,
-    PageNotFoundComponent,
-    ProfileComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ShowArticlesModule,
+    AdminModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AsyncLocalStorageModule,
     AngularFontAwesomeModule,
-    FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot(),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule
   ],

@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ArticleService } from '../services/article.service';
-import { Article } from '../models/article';
+import { ArticleService } from '../../services/article.service';
+import { Article } from '../../models/article';
 import { Routes, Router } from '@angular/router';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-add-article',
   templateUrl: './add-article.component.html',

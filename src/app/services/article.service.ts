@@ -33,7 +33,7 @@ export class ArticleService {
 
   saveLocalArticle(article: Article) {
     this.storage.setItem('article',article).subscribe((e) => {
-      this.router.navigate(['./addArticle']);
+      this.router.navigate(['./admin/addArticle']);
     }, (e) => {
       alert("Edycja artykułu niedostępna");
     });
