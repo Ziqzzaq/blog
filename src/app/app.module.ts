@@ -7,7 +7,8 @@ import { AuthService } from './auth/auth.service'
 import { AuthGuardsService } from './auth/auth-guards.service'
 import { AppComponent } from './app.component';
 import { AddArticleComponent } from './add-article/add-article.component';
-import { LoginComponent} from './auth/login/login.component'
+import { LoginComponent } from './auth/login/login.component'
+import { AddUserComponent } from './auth/add-user/add-user.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { AppRoutingModule } from './app.routing.module';
 import { ShowArticlesModule } from './show-articles/show-articles.module'
@@ -32,6 +33,7 @@ const config = {
     AppComponent,
     AddArticleComponent,
     LoginComponent,
+    AddUserComponent,
     PageNotFoundComponent
   ],
   imports: [

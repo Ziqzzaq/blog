@@ -23,9 +23,15 @@ export class AuthService {
     })
   }
 
-  signup(email: string, password: string) {
+  addUser(email: string, password: string, name: string) {
     this.angularFire.auth.createUserWithEmailAndPassword(email,password).then(user =>{
-      console.log(user);
+      user.updateProfile({
+        displayName: name
+    }).then(function() {
+        console.log("Succesful update")
+    }, function(error) {
+        console.log(error);
+    });      
     }).catch(err => {
       console.log(err);
     })

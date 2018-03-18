@@ -1,0 +1,14 @@
+<form (ngSubmit)="addUser(formData)" #formData = "ngForm">
+  <div class="form-add-user">
+    <label>Username</label>
+    <input ngModel type="text" name="name" required>
+
+    <label>Email</label>
+    <input ngModel type="email" name="email" required>
+
+    <label>Password</label>
+    <input ngModel type="password" name="password" required>
+
+    <button type="submit" [disabled]="formData.invalid">Add User</button>
+  </div>
+</form>

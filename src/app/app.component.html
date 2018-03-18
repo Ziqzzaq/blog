@@ -14,13 +14,16 @@
           <li *ngIf="authService.user" class="nav-item">
             <a class="nav-link" routerLink="addArticle">Add article</a>
           </li>
+          <li *ngIf="authService.user" class="nav-item">
+              <a class="nav-link" routerLink="addUser">Add User</a>
+            </li>
           <li *ngIf="!authService.user" class="nav-item">
             <a class="nav-link" routerLink="login">Login</a>
           </li>
           <li *ngIf="authService.user" class="nav-item">
             <a class="nav-link" (click)="logout()">Logout</a>
           </li>
-          <span *ngIf="authService.user">{{authService.user.email}}</span>
+          <span *ngIf="authService.user">{{authService.user.displayName}}</span>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
