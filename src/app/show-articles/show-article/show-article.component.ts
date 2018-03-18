@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ArticleService } from '../../services/article.service';
 import { HttpService } from '../../services/http.service';
 import { ViewEncapsulation } from '@angular/core';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-show-article',
@@ -14,7 +15,7 @@ import { ViewEncapsulation } from '@angular/core';
 export class ShowArticleComponent implements OnInit {
   article: Article = {
     _id: {$oid: ""},
-    userId: "",
+    userName: "",
     name: "",
     description: "",
     content: "",

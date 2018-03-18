@@ -5,6 +5,7 @@ import { ArticleService } from '../services/article.service';
 import { Article } from '../models/article';
 import { Routes, Router } from '@angular/router';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
+import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-add-article',
   templateUrl: './add-article.component.html',
@@ -23,15 +24,15 @@ export class AddArticleComponent implements OnInit {
   artDescription: string = '';
   artContent: string = '';
   artId: any;
+  userName: string = this.authService.user.displayName;
 
-  constructor(private articleService: ArticleService, private fb: FormBuilder, private router: Router, protected storage: AsyncLocalStorage) {
+  constructor(private articleService: ArticleService, private fb: FormBuilder, private router: Router, protected storage: AsyncLocalStorage, private authService: AuthService) {
 
     this.rForm = fb.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
       'description': [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(40)])],
       'content':[null]
     })
-
     this.getArticle();
   }
 
@@ -39,7 +40,7 @@ export class AddArticleComponent implements OnInit {
   }
 
   createArticle(): Article {
-      const article = { name: this.rForm.get('name').value, userId: '2', description: this.rForm.get('description').value, content: this.rForm.get('content').value, created: new Date().toLocaleString() };
+      const article = { name: this.rForm.get('name').value, userName: this.userName, description: this.rForm.get('description').value, content: this.rForm.get('content').value, created: new Date().toLocaleString() };
       return article;
     }
 
@@ -67,6 +68,7 @@ export class AddArticleComponent implements OnInit {
       this.artDescription = article.description;
       this.artContent = article.content;
       this.artId = article._id.$oid;
+      this.userName = article.userName;
       //console.log('works!');
     //console.log(this.artDescription)
     //console.log(this.artContent)
