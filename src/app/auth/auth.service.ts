@@ -7,7 +7,11 @@ export class AuthService {
   constructor(private angularFire: AngularFireAuth) { }
 
   login(email: string, password: string) {
-    console.log(email,password)
+    this.angularFire.auth.signInWithEmailAndPassword(email,password).then(value => {
+      console.log(value);
+    }).catch(err =>{
+      console.log(err);
+    })
   }
 
   signup(email: string, password: string) {
