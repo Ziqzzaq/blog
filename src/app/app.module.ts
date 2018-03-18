@@ -8,6 +8,7 @@ import { AuthGuardsService } from './auth/auth-guards.service'
 import { AppComponent } from './app.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { LoginComponent} from './auth/login/login.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { AppRoutingModule } from './app.routing.module';
 import { ShowArticlesModule } from './show-articles/show-articles.module'
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +31,8 @@ const config = {
   declarations: [
     AppComponent,
     AddArticleComponent,
-    LoginComponent
+    LoginComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

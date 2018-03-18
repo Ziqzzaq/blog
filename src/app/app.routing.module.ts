@@ -4,6 +4,7 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { ShowArticlesComponent } from './show-articles/show-articles.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuardsService } from './auth/auth-guards.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
     {
@@ -23,6 +24,10 @@ const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+    },
+    {
+        path: '**',
+        component: PageNotFoundComponent
     }
 ];
 
