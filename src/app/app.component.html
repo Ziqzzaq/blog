@@ -11,7 +11,7 @@
           <li class="nav-item active">
             <a class="nav-link" routerLink="showArticles">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="authService.user" class="nav-item">
             <a class="nav-link" routerLink="addArticle">Add article</a>
           </li>
           <li *ngIf="!authService.user" class="nav-item">
