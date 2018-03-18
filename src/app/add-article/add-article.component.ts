@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ArticleService } from '../services/article.service';
@@ -11,7 +11,7 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './add-article.component.html',
   styleUrls: ['./add-article.component.css']
 })
-export class AddArticleComponent implements OnInit {
+export class AddArticleComponent implements OnInit, OnDestroy {
 
 
   rForm: FormGroup;
@@ -38,6 +38,9 @@ export class AddArticleComponent implements OnInit {
 
   ngOnInit() {
   }
+  ngOnDestroy() {
+    this.storage.clear().subscribe(() => {}, () => {});
+  }
 
   createArticle(): Article {
       const article = { name: this.rForm.get('name').value, userName: this.userName, description: this.rForm.get('description').value, content: this.rForm.get('content').value, created: new Date().toLocaleString() };
@@ -60,8 +63,7 @@ export class AddArticleComponent implements OnInit {
       this.articleService.update(article, this.artId);
     }
     this.router.navigate(['./showArticles']);
-    this.storage.clear().subscribe(() => {}, () => {});
-  }
+    }
   input(article: Article) {
     if (article != null) {
       this.artName = article.name;
