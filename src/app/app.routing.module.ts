@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { ShowArticlesComponent } from './show-articles/show-articles.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthGuardsService } from './auth/auth-guards.service';
 
 const appRoutes: Routes = [
     {
@@ -12,7 +13,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'addArticle',
-        component: AddArticleComponent
+        component: AddArticleComponent,
+        canActivate: [AuthGuardsService]
     },
     {
         path: 'showArticles',

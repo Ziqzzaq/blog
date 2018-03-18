@@ -4,6 +4,7 @@ import { HttpService } from './services/http.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { ArticleService } from './services/article.service'
 import { AuthService } from './auth/auth.service'
+import { AuthGuardsService } from './auth/auth-guards.service'
 import { AppComponent } from './app.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { LoginComponent} from './auth/login/login.component'
@@ -45,7 +46,7 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule
   ],
-  providers: [HttpService,ArticleService,AuthService],
+  providers: [HttpService,ArticleService,AuthService,AuthGuardsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
