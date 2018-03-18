@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { ShowArticlesComponent } from './show-articles/show-articles.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const appRoutes: Routes = [
     {
@@ -16,6 +17,10 @@ const appRoutes: Routes = [
     {
         path: 'showArticles',
         component: ShowArticlesComponent,
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
     }
 ];
 
