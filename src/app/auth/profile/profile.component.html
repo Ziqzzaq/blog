@@ -1,0 +1,33 @@
+<form (ngSubmit)="updateName(formName)" #formName = "ngForm">
+    <div>
+      <label>Username</label>
+      <input [(ngModel)] = "this.userName"  type="text" name="name" required>
+  
+      <button type="submit">Update username</button>
+    </div>
+</form>
+
+<form (ngSubmit)="updateEmail(formEmail)" #formEmail = "ngForm">
+      <div>
+
+        <label>Email</label>
+        <input [(ngModel)] = "this.userEmail" type="email" name="email" required>
+        
+        <button type="submit">Update e-mail</button>
+      </div>
+</form>
+
+<form (ngSubmit)="updatePassword(formPassword)" #formPassword = "ngForm">
+    <div>
+
+      <label>New Password</label>
+      <input ngModel type="password" name="password" required>
+      
+      <button type="submit">Update password</button>
+    </div>
+</form>
+
+
+
+
+ 

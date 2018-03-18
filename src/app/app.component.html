@@ -15,7 +15,10 @@
           </li>
           <li *ngIf="authService.user" class="nav-item">
               <a class="nav-link" routerLink="addUser">Add User</a>
-            </li>
+          </li>
+          <li *ngIf="authService.user" class="nav-item">
+              <a class="nav-link" routerLink="profile">Profile</a>
+          </li>
           <li *ngIf="!authService.user" class="nav-item">
             <a class="nav-link" routerLink="login">Login</a>
           </li>

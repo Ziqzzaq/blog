@@ -27,9 +27,9 @@ export class AuthService {
     this.angularFire.auth.createUserWithEmailAndPassword(email,password).then(user =>{
       user.updateProfile({
         displayName: name
-    }).then(function() {
+    }).then(() => {
         console.log("Succesful update")
-    }, function(error) {
+    }, (error) => {
         console.log(error);
     });      
     }).catch(err => {
@@ -40,4 +40,33 @@ export class AuthService {
   logout() {
     this.angularFire.auth.signOut();
   }
+
+  updateName(newName:string) {
+      this.user.updateProfile({
+        displayName: newName,
+        photoURL: ""
+      }).then(() => {
+        console.log("Succesful update name")
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
+  updateEmail(newEmail: string) {
+    this.user.updateEmail(newEmail).then(() => {
+      console.log("Succesful update email")
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  updatePassword(newPassword) {
+    this.user.updatePassword(newPassword).then(function() {
+      console.log("Succesful update password")
+    }).catch(function(error) {
+      console.log(error);
+    });
+    
+  }
+
 }

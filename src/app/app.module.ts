@@ -10,6 +10,7 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { LoginComponent } from './auth/login/login.component'
 import { AddUserComponent } from './auth/add-user/add-user.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { ProfileComponent } from './auth/profile/profile.component'
 import { AppRoutingModule } from './app.routing.module';
 import { ShowArticlesModule } from './show-articles/show-articles.module'
 import { HttpClientModule } from '@angular/common/http';
@@ -34,7 +35,8 @@ const config = {
     AddArticleComponent,
     LoginComponent,
     AddUserComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
