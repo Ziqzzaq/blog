@@ -11,6 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+const config = {
+  apiKey: 'AIzaSyCYwMclrQ62cG0AXTkybVlm_aRvcy4JiWY',
+  authDomain: 'blog-16dbd.firebaseapp.com',
+  databaseURL: 'https://blog-16dbd.firebaseio.com',
+  projectId: 'blog-16dbd',
+  storageBucket: 'blog-16dbd.appspot.com',
+  messagingSenderId: '362847072068'
+};
 
 @NgModule({
   declarations: [
@@ -27,7 +38,9 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     AsyncLocalStorageModule,
     AngularFontAwesomeModule,
     FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule
   ],
   providers: [HttpService,ArticleService],
   bootstrap: [AppComponent]
