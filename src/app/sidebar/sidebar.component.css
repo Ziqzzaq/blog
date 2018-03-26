@@ -1,0 +1,100 @@
+.search-container{
+    display: block;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+input.search-bar{
+    margin: 0 auto;
+    width: 95%;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 1rem;
+    border: 1px solid #D0CFCE;
+    outline: none;
+}
+input.search-bar:focus{
+    border: 1px solid #008ABF;
+    transition: 0.35s ease;
+    color: #008ABF;
+}
+  
+.search-icon{
+    position: relative;
+    float: right;
+    width: 75px;
+    height: 75px;
+    top: -62px;
+}
+.about-author>.header{
+    padding-left: 60px;
+}
+.about-author img{
+    margin-top: 30px;
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.about-me-content {
+    padding-top: 20px; 
+    color: #000;
+    font-family: Hind;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0.84px;
+    text-align: center;
+}
+.header {
+    color: #212121;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    text-align: center;
+    padding-top: 50px;
+}
+.articles {
+    margin-top: 20px;
+}
+.article {
+    text-align: center;
+    padding-top: 20px;
+}
+.article-header {
+    color: #212121;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+}
+.article-created {
+    color: #999999;
+    font-family: Hind;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.84px;
+}
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    color: #999999;
+} 
+
+@media screen and (max-width: 767px) and (min-width: 500px) {
+    .search-icon {
+      right: 12px;
+    }
+    }

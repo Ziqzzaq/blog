@@ -30,7 +30,7 @@ export class AddArticleComponent implements OnInit, OnDestroy {
 
     this.rForm = fb.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
-      'description': [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(40)])],
+      'description': [null, Validators.compose([Validators.required, Validators.minLength(10)])],
       'content':[null]
     })
     this.getArticle();

@@ -11,8 +11,5 @@ export class AppComponent {
   constructor(public authService: AuthService, private router: Router){
   }
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/showArticles']);
-  }
+  
 }

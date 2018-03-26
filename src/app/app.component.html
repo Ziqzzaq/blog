@@ -1,45 +1,29 @@
 <div class="wrapper">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Blog</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="showArticles">Home <span class="sr-only"></span></a>
-          </li>
-          <li *ngIf="authService.user" class="nav-item">
-            <a class="nav-link" routerLink="addArticle">Add article</a>
-          </li>
-          <li *ngIf="authService.user" class="nav-item">
-              <a class="nav-link" routerLink="addUser">Add User</a>
-          </li>
-          <li *ngIf="authService.user" class="nav-item">
-              <a class="nav-link" routerLink="profile">Profile</a>
-          </li>
-          <li *ngIf="!authService.user" class="nav-item">
-            <a class="nav-link" routerLink="login">Login</a>
-          </li>
-          <li *ngIf="authService.user" class="nav-item">
-            <a class="nav-link" (click)="logout()">Logout</a>
-          </li>
-          <span *ngIf="authService.user">{{authService.user.displayName}}</span>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-  <div class="band"></div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="logo">
+      <img src="../assets/logo.png" alt="Logo">
+    </div>
+    <div class="share-widgets">
+      <span class="share-icon">
+        <a href="#">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </span>
+      <span class="share-icon">
+        <a href="#">
+          <i class="fa fa-facebook-f"></i>
+        </a>
+      </span>
+      <span class="share-icon">
+        <a href="#">
+          <i class="fa fa-instagram"></i>
+        </a>
+      </span> 
+    </div>
+  </nav>
+
+
   <router-outlet></router-outlet>
-  
-  
-  <div class="footer">
-    <a href="https://github.com/ziqzzaq" target="_blank">
-      <span class="dialogue">Created by Ziqzzaq</span>
-    </a>
-  </div>
+
+  <app-footer></app-footer>
 </div>

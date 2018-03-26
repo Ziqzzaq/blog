@@ -1,0 +1,37 @@
+
+
+div.article {
+    position: relative;
+    background-color: #fff;
+    padding-top: 50px;
+  }
+  
+  .article-name {
+    margin: 20px;
+    text-align: center;
+    color: #212121;
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 24px;
+    text-transform: uppercase;
+    /* Text style for "b, e the o" */
+    letter-spacing: 1.68px;
+  }
+  
+  .section-author-date {
+    text-align: center;
+    padding-bottom: 200px;
+  }
+  
+  .article-author, .article-created {
+    color: #999999;
+    font-family: Hind;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    line-height: 26.97px;
+    display: inline;
+    text-align: center;
+  }

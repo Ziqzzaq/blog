@@ -4,6 +4,7 @@ import { CommonModule }   from '@angular/common';
 import { ShowArticlesComponent } from './show-articles.component';
 import { ShowArticleComponent } from './show-article/show-article.component';
 import { ArticlesRoutingModule } from './show-articles.routing.module';
+import { SidebarComponent } from '../sidebar/sidebar.component'
 import {InnerHtmlPipe} from "../shared/inner-html.pipe";
 
 @NgModule({
@@ -14,6 +15,7 @@ import {InnerHtmlPipe} from "../shared/inner-html.pipe";
   declarations: [
     ShowArticlesComponent,
     ShowArticleComponent,
+    SidebarComponent,
     InnerHtmlPipe
   ],
   providers: []
