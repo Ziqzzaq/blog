@@ -43,7 +43,7 @@ export class AddArticleComponent implements OnInit, OnDestroy {
   }
 
   createArticle(): Article {
-      const article = { name: this.rForm.get('name').value, userName: this.userName, description: this.rForm.get('description').value, content: this.rForm.get('content').value, created: new Date().toLocaleString() };
+      const article = { name: this.rForm.get('name').value, userName: this.userName, description: this.rForm.get('description').value, content: this.rForm.get('content').value, created: new Date() };
       return article;
     }
 

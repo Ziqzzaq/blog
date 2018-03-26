@@ -19,7 +19,7 @@ export class ShowArticleComponent implements OnInit {
     name: "",
     description: "",
     content: "",
-    created: ""
+    created: null
   };
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService, private httpService: HttpService) { }

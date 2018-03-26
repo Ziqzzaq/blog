@@ -4,6 +4,6 @@ export interface Article {
     name: string;
     description: string;
     content: any;
-    created: string;
+    created: Date;
     }
     

@@ -14,6 +14,7 @@ body{
 }
 img {
   height: 40px;
+  cursor: pointer;
 }
 .share-widgets {
   position: absolute;
