@@ -12,7 +12,8 @@ import { AuthService } from '../auth/auth.service';
 export class ShowArticlesComponent implements OnInit{
 
   articlesList: Array<Article> = [];
-
+  p: number = 1;
+  
   constructor(private articleService: ArticleService, protected storage: AsyncLocalStorage, public authService: AuthService) {
     this.articleService.getArticlesListObs().subscribe((articles: Array<Article>) => {
       this.articlesList = articles;
@@ -25,6 +26,8 @@ export class ShowArticlesComponent implements OnInit{
 
   ngOnInit(){
   }
+
+
 
   edit(article: Article) {
     this.articleService.saveLocalArticle(article);

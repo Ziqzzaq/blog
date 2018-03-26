@@ -3,7 +3,7 @@
 </header>
 <div class="row">
   <div class=" articles col-md-8">
-    <div class="article" *ngFor="let article of articlesList">
+    <div class="article" *ngFor="let article of articlesList | paginate: { itemsPerPage: 3, currentPage: p }">
       <p class="article-category">Traveling</p>
       <h1 class="article-name">{{article.name}}</h1>
       <div class="section-author-date">
@@ -24,6 +24,7 @@
         <hr>
       </div>
     </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
   <div class="sidebar col-md-4">
     <app-sidebar></app-sidebar>

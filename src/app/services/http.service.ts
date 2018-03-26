@@ -7,6 +7,7 @@ import { Routes, Router } from '@angular/router';
 
 @Injectable()
 export class HttpService {
+  
 
   readonly URL_DB = 'https://api.mlab.com/api/1/databases/ziqzzaqdb/collections/articles';
   readonly param = new HttpParams().set('apiKey', 'aBvH1fu7xyds2qPrYtqVOudRGQjwjMWc');

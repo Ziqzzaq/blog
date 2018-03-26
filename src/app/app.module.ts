@@ -22,6 +22,8 @@ import { AlertModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+
+
 const config = {
   apiKey: 'AIzaSyCYwMclrQ62cG0AXTkybVlm_aRvcy4JiWY',
   authDomain: 'blog-16dbd.firebaseapp.com',
@@ -53,7 +55,8 @@ const config = {
     AlertModule.forRoot(),
     AngularFontAwesomeModule,
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    
   ],
   providers: [HttpService,ArticleService,AuthService,AuthGuardsService],
   bootstrap: [AppComponent]

@@ -6,11 +6,13 @@ import { ShowArticleComponent } from './show-article/show-article.component';
 import { ArticlesRoutingModule } from './show-articles.routing.module';
 import { SidebarComponent } from '../sidebar/sidebar.component'
 import {InnerHtmlPipe} from "../shared/inner-html.pipe";
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   imports: [
     CommonModule,
-    ArticlesRoutingModule
+    ArticlesRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [
     ShowArticlesComponent,
