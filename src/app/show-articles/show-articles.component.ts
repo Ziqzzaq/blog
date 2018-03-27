@@ -9,29 +9,37 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './show-articles.component.html',
   styleUrls: ['./show-articles.component.css']
 })
-export class ShowArticlesComponent implements OnInit{
+export class ShowArticlesComponent implements OnInit {
 
   articlesList: Array<Article> = [];
   p: number = 1;
-  
+
   constructor(private articleService: ArticleService, protected storage: AsyncLocalStorage, public authService: AuthService) {
     this.articleService.getArticlesListObs().subscribe((articles: Array<Article>) => {
       this.articlesList = articles;
-      this.storage.setItem('articles',articles).subscribe(() => {
+      this.articlesList.forEach((value: Article) => {
+        value.created = new Date(value.created);
+        console.log(value.created);
+      });
+      this.articlesList.sort((a: Article, b: Article) => {
+        return a.created.getTime() - b.created.getTime();
+
+      });
+      this.storage.setItem('articles', articles).subscribe(() => {
       }, () => {
       });
       //console.log(this.articlesList);
     });
   }
 
-  ngOnInit(){
-  }
+  ngOnInit() {
 
+  }
 
 
   edit(article: Article) {
     this.articleService.saveLocalArticle(article);
-  } 
+  }
 
   delete(article: Article) {
     this.articleService.delete(article);

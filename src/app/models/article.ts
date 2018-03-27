@@ -3,7 +3,7 @@ export interface Article {
     userName: string;
     name: string;
     description: string;
-    content: any;
+    content: string;
     created: Date;
     }
     

@@ -122,6 +122,10 @@ hr {
   border-width: 1px;
   color: #999999;
 } 
+.pagination /deep/ .ngx-pagination .current {
+  background: #464646;
+  text-decoration: none;
+}
 
 
 

@@ -24,9 +24,10 @@
         <hr>
       </div>
     </div>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Poprzednie" nextLabel="Następne"></pagination-controls>
   </div>
   <div class="sidebar col-md-4">
     <app-sidebar></app-sidebar>
-  </div>
+  </div> 
 </div>
+
