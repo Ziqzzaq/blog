@@ -1,10 +1,10 @@
 <div class="article col-md-7">
-    <h1 class="article-name">{{article.name}}</h1>
+    <h1 class="article-name" >{{this.article.name}}</h1>
     <div class="section-author-date">
         <p class="article-author">
-            <i class="fa fa-user"></i>{{article.userName}}</p>
+            <i class="fa fa-user"></i>{{this.article.userName}}</p>
         <p class="article-created">
-            <i class="fa fa-calendar"></i>{{article.created}}</p>
+            <i class="fa fa-calendar"></i>{{this.article.created}}</p>
     </div>
     <div class="article-content" [innerHTML]="this.article.content | innerHtml"></div>
 </div>

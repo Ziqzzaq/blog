@@ -16,7 +16,7 @@
         <app-ngx-editor formControlName="content" [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="this.artContent"></app-ngx-editor>
         <small class="alert" *ngIf="!rForm.controls['content'].valid && rForm.controls['content'].touched">You must specify a content that's between 30 and 500 characters.</small>
       </div>
-      <input type="submit" class="btn btn-primary form-control" value="Submit Form" [disabled]="!rForm.valid">
+      <input type="submit" class="btn btn-primary form-control" value="Submit" [disabled]="!rForm.valid">
     </div>
   </form>
 </div>

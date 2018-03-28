@@ -1,6 +1,6 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
-
+import { BrowserModule, Title }  from '@angular/platform-browser';
 import { ShowArticlesComponent } from './show-articles.component';
 import { ShowArticleComponent } from './show-article/show-article.component';
 import { ArticlesRoutingModule } from './show-articles.routing.module';
@@ -12,7 +12,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     CommonModule,
     ArticlesRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserModule
   ],
   declarations: [
     ShowArticlesComponent,
@@ -20,7 +21,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SidebarComponent,
     InnerHtmlPipe
   ],
-  providers: []
+  providers: [
+    Title
+  ]
 })
 export class ShowArticlesModule {}
 

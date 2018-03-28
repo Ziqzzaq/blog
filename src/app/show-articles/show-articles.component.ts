@@ -3,6 +3,7 @@ import { Article } from '../models/article';
 import { ArticleService } from '../services/article.service';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 import { AuthService } from '../auth/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-show-articles',
@@ -14,26 +15,15 @@ export class ShowArticlesComponent implements OnInit {
   articlesList: Array<Article> = [];
   p: number = 1;
 
-  constructor(private articleService: ArticleService, protected storage: AsyncLocalStorage, public authService: AuthService) {
+  constructor(private articleService: ArticleService, protected storage: AsyncLocalStorage, public authService: AuthService, private titleService: Title) {
+    this.titleService.setTitle("Blog o programowaniu");
     this.articleService.getArticlesListObs().subscribe((articles: Array<Article>) => {
       this.articlesList = articles;
-      this.articlesList.forEach((value: Article) => {
-        value.created = new Date(value.created);
-        console.log(value.created);
-      });
-      this.articlesList.sort((a: Article, b: Article) => {
-        return a.created.getTime() - b.created.getTime();
-
-      });
-      this.storage.setItem('articles', articles).subscribe(() => {
-      }, () => {
-      });
-      //console.log(this.articlesList);
+      this.articleService.preparationArticlesList(this.articlesList);
     });
   }
 
   ngOnInit() {
-
   }
 
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../services/article.service';
+import { Article } from '../models/article';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  articlesList: Array<Article> = [];
+
+  constructor(private articleService: ArticleService) {
+    this.articleService.getArticlesListObs().subscribe((articles: Array<Article>) => {
+      this.articlesList = articles;
+      this.articleService.sortArticlesByViews(this.articlesList);
+    });
+  }
 
   ngOnInit() {
+
   }
 
 }

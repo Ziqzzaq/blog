@@ -31,6 +31,9 @@ export class ArticleService {
     console.log("In article service"+article);
   }
 
+  saveViews(article: Article, artId:string){
+    this.httpService.saveViews(article, artId);
+  }
   saveLocalArticle(article: Article) {
     this.storage.setItem('article',article).subscribe((e) => {
       this.router.navigate(['./addArticle']);
@@ -57,4 +60,21 @@ export class ArticleService {
     this.httpService.deleteArticle(artId);
   }
 
+  preparationArticlesList(articlesList: Array<Article>) {
+    articlesList.forEach((value: Article) => {
+      value.created = new Date(value.created);
+      console.log(value.created);
+    });
+    articlesList.sort((a: Article, b: Article) => {
+      return a.created.getTime() - b.created.getTime();
+    });
+    articlesList.reverse();
+  }
+
+  sortArticlesByViews(articlesList: Array<Article>){
+    articlesList.sort((a: Article, b: Article) => {
+      return a.views - b.views;
+    });
+    articlesList.reverse();
+  }
 }

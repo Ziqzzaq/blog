@@ -41,7 +41,7 @@ const config = {
     AddUserComponent,
     PageNotFoundComponent,
     ProfileComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,8 +55,7 @@ const config = {
     AlertModule.forRoot(),
     AngularFontAwesomeModule,
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule,
-    
+    AngularFireAuthModule
   ],
   providers: [HttpService,ArticleService,AuthService,AuthGuardsService],
   bootstrap: [AppComponent]

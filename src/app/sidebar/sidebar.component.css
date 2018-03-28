@@ -82,6 +82,15 @@ input.search-bar:focus{
     text-transform: uppercase;
     letter-spacing: 0.84px;
 }
+.article-read {
+    color: #212121;
+    font-family: Hind;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2.8px;
+}
 hr { 
     display: block;
     margin-top: 0.5em;

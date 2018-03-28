@@ -7,7 +7,7 @@ import { Routes, Router } from '@angular/router';
 
 @Injectable()
 export class HttpService {
-  
+
 
   readonly URL_DB = 'https://api.mlab.com/api/1/databases/ziqzzaqdb/collections/articles';
   readonly param = new HttpParams().set('apiKey', 'aBvH1fu7xyds2qPrYtqVOudRGQjwjMWc');
@@ -34,7 +34,15 @@ export class HttpService {
       location.reload();
     });
   }
-  updateArticle(article: Article, artId: string){
+
+  saveViews(article: Article, artId: string) {
+    const URL_DB = this.URL_DB + "/" + artId;
+    article.views++;
+    this.http.put(URL_DB, article, { params: this.param }).subscribe(data => {
+    });
+  }
+
+  updateArticle(article: Article, artId: string) {
     const URL_DB = this.URL_DB + "/" + artId;
     console.log(URL_DB);
     console.log(article);

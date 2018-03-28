@@ -20,11 +20,15 @@ export class AddArticleComponent implements OnInit, OnDestroy {
   name: string = '';
   content: string = '';
   titleAlert: string = 'This field is required & You must specify a content more than 3 characters.';
+
+  
   artName: string = '';
   artDescription: string = '';
   artContent: string = '';
   artId: any;
+  artViews = 0;
   userName: string = this.authService.user.displayName;
+  
 
   constructor(private articleService: ArticleService, private fb: FormBuilder, private router: Router, protected storage: AsyncLocalStorage, private authService: AuthService) {
 
@@ -43,7 +47,7 @@ export class AddArticleComponent implements OnInit, OnDestroy {
   }
 
   createArticle(): Article {
-      const article = { name: this.rForm.get('name').value, userName: this.userName, description: this.rForm.get('description').value, content: this.rForm.get('content').value, created: new Date() };
+      const article = { name: this.rForm.get('name').value, userName: this.userName, description: this.rForm.get('description').value, content: this.rForm.get('content').value,views: 0, created: new Date() };
       return article;
     }
 

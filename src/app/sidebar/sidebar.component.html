@@ -14,26 +14,15 @@
   </div>
 </div>
 <hr>
-<div class="latest-posts ">
+<div class="popular-posts ">
   <div class="header ">
-    Latest Post
+    Popular post
   </div>
-  <div class="articles ">
-    <div class="article ">
-      <div class="article-header ">Grawitacja</div>
-      <div class="article-created ">24.03.2018, 13:49:21</div>
-    </div>
-    <div class="article ">
-      <div class="article-header ">Światło</div>
-      <div class="article-created ">24.03.2018, 13:49:21</div>
-    </div>
-    <div class="article ">
-      <div class="article-header ">Jeszcze raz edytor</div>
-      <div class="article-created ">24.03.2018, 13:49:21</div>
-    </div>
-    <div class="article ">
-      <div class="article-header ">Grawitacja</div>
-      <div class="article-created ">24.03.2018, 13:49:21</div>
+  <div class="articles" *ngFor="let article of articlesList; let i=index">
+    <div class="article" *ngIf="i<4">
+      <div class="article-header ">{{article.name}}</div>
+      <div class="article-created ">{{article.created | date: 'dd-MM-yyyy'}}</div>
+      <a class="article-read" [routerLink]="['/article', article._id.$oid]">Read more</a>
     </div>
   </div>
 </div>
