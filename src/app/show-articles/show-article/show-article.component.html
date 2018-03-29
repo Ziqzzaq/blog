@@ -4,7 +4,7 @@
         <p class="article-author">
             <i class="fa fa-user"></i>{{this.article.userName}}</p>
         <p class="article-created">
-            <i class="fa fa-calendar"></i>{{this.article.created}}</p>
+            <i class="fa fa-calendar"></i>{{this.article.created | date: 'dd-MM-yyyy'}}</p>
     </div>
     <div class="article-content" [innerHTML]="this.article.content | innerHtml"></div>
 </div>
