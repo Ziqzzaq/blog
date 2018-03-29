@@ -18,11 +18,11 @@
   <div class="header ">
     Popular post
   </div>
-  <div class="articles" *ngFor="let article of articlesList; let i=index">
-    <div class="article" *ngIf="i<4">
-      <div class="article-header ">{{article.name}}</div>
-      <div class="article-created ">{{article.created | date: 'dd-MM-yyyy'}}</div>
-      <a class="article-read" [routerLink]="['/article', article._id.$oid]">Read more</a>
+  <div class="posts" *ngFor="let article of articlesList; let i=index">
+    <div class="post" *ngIf="i<4">
+      <div class="post-header ">{{article.name}}</div>
+      <div class="post-created ">{{article.created | date: 'dd-MM-yyyy'}}</div>
+      <a class="post-read" [routerLink]="['/article', article._id.$oid]">Read more</a>
     </div>
   </div>
 </div>

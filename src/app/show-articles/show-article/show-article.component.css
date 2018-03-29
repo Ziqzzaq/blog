@@ -1,13 +1,19 @@
+.row {
+  margin: 0;
+  background-color: #fff;
+}
+div.post-container {
+    padding-right: 30px;
+    padding-left: 0;
+  }
 
-
-div.article {
+  .post {
     position: relative;
     background-color: #fff;
-    padding-top: 50px;
   }
-  
-  .article-name {
-    margin: 20px;
+  .post-name {
+    padding: 20px;
+    padding-bottom: 20px;
     text-align: center;
     color: #212121;
     font-family: Montserrat;
@@ -15,16 +21,15 @@ div.article {
     font-weight: 700;
     line-height: 24px;
     text-transform: uppercase;
-    /* Text style for "b, e the o" */
     letter-spacing: 1.68px;
   }
   
   .section-author-date {
     text-align: center;
-    padding-bottom: 200px;
+    padding-bottom: 150px;
   }
   
-  .article-author, .article-created {
+  .post-author, .post-created {
     color: #999999;
     font-family: Hind;
     font-size: 15px;
@@ -34,4 +39,11 @@ div.article {
     line-height: 26.97px;
     display: inline;
     text-align: center;
+  }
+  .post-content > p {
+    margin-bottom: 0 !important;
+  }
+  .sidebar { 
+    padding: 20px;
+    background-color: #fff;
   }

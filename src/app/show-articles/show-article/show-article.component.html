@@ -1,10 +1,18 @@
-<div class="article col-md-7">
-    <h1 class="article-name" >{{this.article.name}}</h1>
-    <div class="section-author-date">
-        <p class="article-author">
-            <i class="fa fa-user"></i>{{this.article.userName}}</p>
-        <p class="article-created">
-            <i class="fa fa-calendar"></i>{{this.article.created | date: 'dd-MM-yyyy'}}</p>
+<div class="row">
+    <div class="post-container col-md-8">
+        <div class="post">
+            <h1 class="post-name">{{this.article.name}}</h1>
+            <div class="section-author-date">
+                <p class="post-author">
+                    <i class="fa fa-user"></i>{{this.article.userName}}</p>
+                <p class="post-created">
+                    <i class="fa fa-calendar"></i>{{this.article.created | date: 'dd-MM-yyyy'}}</p>
+            </div>
+            <div class="post-content" [innerHTML]="this.article.content | innerHtml"></div>
+        </div>
     </div>
-    <div class="article-content" [innerHTML]="this.article.content | innerHtml"></div>
+
+    <div class="sidebar col-md-4">
+        <app-sidebar></app-sidebar>
+    </div>
 </div>

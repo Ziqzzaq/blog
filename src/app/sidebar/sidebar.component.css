@@ -57,14 +57,16 @@ input.search-bar:focus{
     text-align: center;
     padding-top: 50px;
 }
-.articles {
+.posts {
     margin-top: 20px;
 }
-.article {
+.post {
     text-align: center;
     padding-top: 20px;
+    background-color: #fff;
+    border-radius: 15px;
 }
-.article-header {
+.post-header {
     color: #212121;
     font-family: Montserrat;
     font-size: 16px;
@@ -73,7 +75,7 @@ input.search-bar:focus{
     text-transform: uppercase;
     letter-spacing: 1.6px;
 }
-.article-created {
+.post-created {
     color: #999999;
     font-family: Hind;
     font-size: 14px;
@@ -82,7 +84,7 @@ input.search-bar:focus{
     text-transform: uppercase;
     letter-spacing: 0.84px;
 }
-.article-read {
+.post-read {
     color: #212121;
     font-family: Hind;
     font-size: 14px;

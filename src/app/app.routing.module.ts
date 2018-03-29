@@ -7,6 +7,8 @@ import { AuthGuardsService } from './auth/auth-guards.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
+import { UploadListComponent } from './uploads/upload-list/upload-list.component';
 
 const appRoutes: Routes = [
     {
@@ -26,15 +28,19 @@ const appRoutes: Routes = [
     },
     {
         path: 'profile',
-        component: ProfileComponent,
+        component: ProfileComponent
     },
     {
         path: 'showArticles',
-        component: ShowArticlesComponent,
+        component: ShowArticlesComponent
     },
     {
         path: 'login',
-        component: LoginComponent,
+        component: LoginComponent
+    },
+    {
+        path: 'uploadsList',
+        component: UploadListComponent
     }
 ];
 

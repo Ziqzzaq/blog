@@ -21,7 +21,11 @@ import { NgxEditorModule } from 'ngx-editor';
 import { AlertModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { UploadService } from './services/upload.service';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
+import { UploadListComponent } from './uploads/upload-list/upload-list.component';
+import { UploadDetailComponent } from './uploads/upload-detail/upload-detail.component'
 
 
 const config = {
@@ -42,6 +46,9 @@ const config = {
     PageNotFoundComponent,
     ProfileComponent,
     FooterComponent,
+    UploadFormComponent,
+    UploadListComponent,
+    UploadDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +62,10 @@ const config = {
     AlertModule.forRoot(),
     AngularFontAwesomeModule,
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
-  providers: [HttpService,ArticleService,AuthService,AuthGuardsService],
+  providers: [HttpService,ArticleService,AuthService,AuthGuardsService, UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

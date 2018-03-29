@@ -1,7 +1,6 @@
 .row {
   margin: 0;
-  padding-left: 5%;
-  padding-right: 5%;
+  background-color: #fff;
 }
 header{
   background-image: url(../../assets/header-background.png);
@@ -11,19 +10,20 @@ header{
   min-height: 500px;
   margin-left: 5%;
   margin-right: 5%;
+  background-color: #fff;
 }
-.articles {
+.posts {
   padding-right: 30px;
   padding-left: 0;
 }
-div.article {
+div.post {
   text-align: center;
   position: relative;
   background-color: #fff;
   padding-top: 50px;
 }
 
-.article-name {
+.post-name {
   margin: 20px;
   text-align: center;
   color: #212121;
@@ -41,7 +41,7 @@ div.article {
   margin-bottom: 30px;
 }
 
-.article-author, .article-created {
+.post-author, .post-created {
   color: #999999;
   font-family: Hind;
   font-size: 15px;
@@ -52,7 +52,7 @@ div.article {
   display: inline;
   text-align: center;
 }
-.article-category {
+.post-category {
   color: #999999;
   font-family: Hind;
   font-size: 16px;
@@ -62,7 +62,7 @@ div.article {
   letter-spacing: 1.6px;
 }
 
-.article-description {
+.post-description {
   color: #464646;
   font-family: Hind;
   font-size: 13px;
@@ -72,7 +72,7 @@ div.article {
   padding-left: 50px;
   padding-right: 50px;
 }
-.article-read {
+.post-read {
   color: #212121;
   font-family: Hind;
   font-size: 14px;
@@ -129,7 +129,7 @@ hr {
 
 
 @media only screen and (max-width: 767px){
-.articles {
+.posts {
   padding-right: 0;
 }
 }
