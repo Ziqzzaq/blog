@@ -9,6 +9,7 @@ import { Routes, Router } from '@angular/router';
 
 @Injectable()
 export class ArticleService {
+  name = [];
   private articlesListObs = new BehaviorSubject<Array<Article>>([]);
   private articleObs: Subject<Article>;
   constructor(private httpService: HttpService, protected storage: AsyncLocalStorage, private router: Router) {
@@ -63,10 +64,9 @@ export class ArticleService {
   preparationArticlesList(articlesList: Array<Article>) {
     articlesList.forEach((value: Article) => {
       value.created = new Date(value.created);
-      console.log(value.created);
     });
     articlesList.sort((a: Article, b: Article) => {
-      return a.created.getTime() - b.created.getTime();
+      return b.created.getTime() - a.created.getTime();
     });
     articlesList.reverse();
   }

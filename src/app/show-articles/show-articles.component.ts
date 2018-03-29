@@ -18,9 +18,12 @@ export class ShowArticlesComponent implements OnInit {
   constructor(private articleService: ArticleService, protected storage: AsyncLocalStorage, public authService: AuthService, private titleService: Title) {
     this.titleService.setTitle("Blog o programowaniu");
     this.articleService.getArticlesListObs().subscribe((articles: Array<Article>) => {
-      this.articlesList = articles;
-      this.articleService.preparationArticlesList(this.articlesList);
+      this.articleService.preparationArticlesList(articles);
+      articles.forEach((article: Article) => {
+        this.articlesList.push(article);
+      });
     });
+
   }
 
   ngOnInit() {

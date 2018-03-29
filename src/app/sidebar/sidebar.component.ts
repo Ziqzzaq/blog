@@ -13,8 +13,10 @@ export class SidebarComponent implements OnInit {
 
   constructor(private articleService: ArticleService) {
     this.articleService.getArticlesListObs().subscribe((articles: Array<Article>) => {
-      this.articlesList = articles;
-      this.articleService.sortArticlesByViews(this.articlesList);
+      this.articleService.sortArticlesByViews(articles);
+      articles.forEach((article: Article) => {
+        this.articlesList.push(article);
+      });
     });
   }
 
