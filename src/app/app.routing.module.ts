@@ -40,7 +40,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'uploadsList',
-        component: UploadListComponent
+        component: UploadListComponent,
+        canActivate: [AuthGuardsService]
     }
 ];
 

@@ -1,2 +1,4 @@
 <strong>{{upload.name}}</strong>
+<a href="{{upload.url}}">Download</a>
+<button ngxClipboard  [cbContent]="upload.url">Copy url to file</button>
 <button (click)='deleteUpload()' class="button is-danger is-small">Delete</button><br>

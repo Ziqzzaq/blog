@@ -68,7 +68,6 @@ export class ArticleService {
     articlesList.sort((a: Article, b: Article) => {
       return b.created.getTime() - a.created.getTime();
     });
-    articlesList.reverse();
   }
 
   sortArticlesByViews(articlesList: Array<Article>){

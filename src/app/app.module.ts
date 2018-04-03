@@ -26,6 +26,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
 import { UploadListComponent } from './uploads/upload-list/upload-list.component';
 import { UploadDetailComponent } from './uploads/upload-detail/upload-detail.component'
+import { ClipboardModule } from 'ngx-clipboard';
 
 
 const config = {
@@ -63,7 +64,8 @@ const config = {
     AngularFontAwesomeModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ClipboardModule
   ],
   providers: [HttpService,ArticleService,AuthService,AuthGuardsService, UploadService],
   bootstrap: [AppComponent]
