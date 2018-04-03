@@ -40,7 +40,7 @@ export class HttpService {
   saveArticles(article: Article) {
     this.http.post(this.URL_DB, article, { params: this.param }).subscribe(data => {
       console.log("save");
-      this.router.navigate(['./artcles']);
+      this.router.navigate(['./articles']);
       location.reload();
     });
   }
@@ -60,7 +60,7 @@ export class HttpService {
     this.http.put(URL_DB, article, { params: this.param }).subscribe(data => {
       console.log(data);
       console.log("update");
-      this.router.navigate(['./artcles']);
+      this.router.navigate(['./articles']);
       location.reload();
     });
   }

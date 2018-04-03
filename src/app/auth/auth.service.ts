@@ -23,6 +23,13 @@ export class AuthService {
     })
   }
 
+  loginInAnonymously() {
+    this.angularFire.auth.signInAnonymously().catch(function (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+  }
+
   addUser(email: string, password: string, name: string) {
     this.angularFire.auth.createUserWithEmailAndPassword(email,password).then(user =>{
       user.updateProfile({
