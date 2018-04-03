@@ -13,7 +13,6 @@ import { FooterComponent } from './footer/footer.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { ProfileComponent } from './profile/profile.component'
 import { AppRoutingModule } from './app.routing.module';
-import { ShowArticlesModule } from './show-articles/show-articles.module'
 import { HttpClientModule } from '@angular/common/http';
 import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -21,12 +20,9 @@ import { NgxEditorModule } from 'ngx-editor';
 import { AlertModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { UploadService } from './services/upload.service';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
-import { UploadListComponent } from './uploads/upload-list/upload-list.component';
-import { UploadDetailComponent } from './uploads/upload-detail/upload-detail.component'
-import { ClipboardModule } from 'ngx-clipboard';
+import { UploadModule } from './uploads/upload.module';
+
 
 
 const config = {
@@ -46,15 +42,12 @@ const config = {
     AddUserComponent,
     PageNotFoundComponent,
     ProfileComponent,
-    FooterComponent,
-    UploadFormComponent,
-    UploadListComponent,
-    UploadDetailComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ShowArticlesModule,
+    UploadModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -64,10 +57,9 @@ const config = {
     AngularFontAwesomeModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    ClipboardModule
+    AngularFireDatabaseModule
   ],
-  providers: [HttpService,ArticleService,AuthService,AuthGuardsService, UploadService],
+  providers: [HttpService,ArticleService,AuthService,AuthGuardsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

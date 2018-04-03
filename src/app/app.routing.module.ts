@@ -9,11 +9,12 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
 import { UploadListComponent } from './uploads/upload-list/upload-list.component';
+import { ShowArticlesModule } from './show-articles/show-articles.module';
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: '/showArticles',
+        redirectTo: '/articles',
         pathMatch: 'full'
     },
     {
@@ -31,10 +32,6 @@ const appRoutes: Routes = [
         component: ProfileComponent
     },
     {
-        path: 'showArticles',
-        component: ShowArticlesComponent
-    },
-    {
         path: 'login',
         component: LoginComponent
     },
@@ -42,11 +39,15 @@ const appRoutes: Routes = [
         path: 'uploadsList',
         component: UploadListComponent,
         canActivate: [AuthGuardsService]
-    }
+    },
+    {
+        path: '**',
+        component: PageNotFoundComponent
+    },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [ShowArticlesModule, RouterModule.forRoot(appRoutes)],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

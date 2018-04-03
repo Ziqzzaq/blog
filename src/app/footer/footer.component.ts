@@ -16,7 +16,7 @@ export class FooterComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/showArticles']);
+    this.router.navigate(['/articles']);
   }
 
 }

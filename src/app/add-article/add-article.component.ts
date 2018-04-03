@@ -66,7 +66,7 @@ export class AddArticleComponent implements OnInit, OnDestroy {
     } else {
       this.articleService.update(article, this.artId);
     }
-    this.router.navigate(['./showArticles']);
+    this.router.navigate(['./articles']);
     }
   input(article: Article) {
     if (article != null) {

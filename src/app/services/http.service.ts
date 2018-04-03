@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 import { Article } from '../models/article';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/observable/empty';
 import { Routes, Router } from '@angular/router';
 
 @Injectable()
@@ -24,13 +27,20 @@ export class HttpService {
 
   getArticleById(artId): Observable<Article> {
     const URL_DB = this.URL_DB + "/" + artId;
-    return this.http.get<Article>(URL_DB, { params: this.param });
+    return this.http.get(URL_DB, { params: this.param })
+      .catch((error: any) => {
+        if (error.status === 404) {
+          return this.notFoundArticle();
+        } else {
+          return Observable.throw(error);
+        }
+      })
   }
 
   saveArticles(article: Article) {
     this.http.post(this.URL_DB, article, { params: this.param }).subscribe(data => {
       console.log("save");
-      this.router.navigate(['./showArticles']);
+      this.router.navigate(['./artcles']);
       location.reload();
     });
   }
@@ -50,7 +60,7 @@ export class HttpService {
     this.http.put(URL_DB, article, { params: this.param }).subscribe(data => {
       console.log(data);
       console.log("update");
-      this.router.navigate(['./showArticles']);
+      this.router.navigate(['./artcles']);
       location.reload();
     });
   }
@@ -62,5 +72,10 @@ export class HttpService {
       console.log("delete");
       location.reload();
     });
+  }
+
+  notFoundArticle() {
+    this.router.navigate(['**']);
+    return Observable.empty();
   }
 }

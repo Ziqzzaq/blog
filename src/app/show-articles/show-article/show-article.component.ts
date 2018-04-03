@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { Article } from '../../models/article';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ArticleService } from '../../services/article.service';
 import { HttpService } from '../../services/http.service';
 import { ViewEncapsulation } from '@angular/core';
