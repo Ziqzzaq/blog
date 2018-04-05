@@ -23,6 +23,7 @@ export class ShowArticleComponent implements OnInit, OnDestroy {
     views: 0,
     created: null
   };
+  showSpinner: boolean = true;
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService, private httpService: HttpService, private titleService: Title) { }
 
@@ -33,6 +34,7 @@ export class ShowArticleComponent implements OnInit, OnDestroy {
     this.articleService.getArticle().subscribe((article: Article) => {
       this.article = article;
       this.titleService.setTitle(article.name);
+      this.showSpinner = false
     });
   }
 

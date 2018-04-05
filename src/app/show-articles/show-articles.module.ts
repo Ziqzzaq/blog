@@ -7,6 +7,7 @@ import { ArticlesRoutingModule } from './show-articles.routing.module';
 import { SidebarComponent } from '../sidebar/sidebar.component'
 import {InnerHtmlPipe} from "../shared/inner-html.pipe";
 import {NgxPaginationModule} from 'ngx-pagination';
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ShowArticlesComponent,
     ShowArticleComponent,
     SidebarComponent,
+    LoadingSpinnerComponent,
     InnerHtmlPipe
   ],
   providers: [

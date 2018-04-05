@@ -14,6 +14,7 @@ export class ShowArticlesComponent implements OnInit {
 
   articlesList: Array<Article> = [];
   p: number = 1;
+  showSpinner: boolean = true;
 
   constructor(private articleService: ArticleService, protected storage: AsyncLocalStorage, public authService: AuthService, private titleService: Title) {
     this.titleService.setTitle("Blog o programowaniu");
@@ -21,6 +22,7 @@ export class ShowArticlesComponent implements OnInit {
       this.articleService.preparationArticlesList(articles);
       articles.forEach((article: Article) => {
         this.articlesList.push(article);
+        this.showSpinner = false;
       });
     });
 

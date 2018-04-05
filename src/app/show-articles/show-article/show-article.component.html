@@ -8,6 +8,7 @@
                 <p class="post-created">
                     <i class="fa fa-calendar"></i>{{this.article.created | date: 'dd-MM-yyyy'}}</p>
             </div>
+            <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
             <div class="post-content" [innerHTML]="this.article.content | innerHtml"></div>
         </div>
     </div>
