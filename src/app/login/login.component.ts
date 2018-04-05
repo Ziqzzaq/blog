@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  loginInAnonymusly() {
+  loginInAnonymously() {
     this.authService.loginInAnonymously();
   }
 }

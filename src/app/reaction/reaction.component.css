@@ -44,4 +44,8 @@
     bottom: -10px;
     width: 32px;
   }
-  
+  @media only screen and (max-width: 767px){
+  .emojis{
+    width: 180px;
+  }
+  }

@@ -45,6 +45,7 @@ export class ReactionComponent implements OnInit, OnDestroy {
       } else {
         this.reactionSvc.updateReaction(this.itemId, val)
       }
+      this.showEmojis = false;
     }
   }
 
