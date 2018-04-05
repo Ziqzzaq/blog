@@ -31,6 +31,7 @@
     "firebase-tools": "^3.17.6",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
+    "ng4-click-outside": "^1.0.1",
     "ngx-bootstrap": "^2.0.3",
     "ngx-clipboard": "^10.0.0",
     "ngx-editor": "^3.3.0-rc.13",

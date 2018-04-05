@@ -15,6 +15,7 @@ export class ReactionComponent implements OnInit, OnDestroy {
 
   showEmojis = false;
   emojiList: string[];
+  reactTitle: string = "React";
 
   reactionCount: any;
   userReaction: any;
@@ -51,6 +52,11 @@ export class ReactionComponent implements OnInit, OnDestroy {
 
   toggleShow() {
     this.showEmojis = !this.showEmojis
+    if(this.showEmojis){
+      this.reactTitle = "Not react"
+    } else {
+      this.reactTitle = "React"
+    }
   }
 
 

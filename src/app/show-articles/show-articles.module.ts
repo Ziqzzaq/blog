@@ -10,13 +10,15 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 import { ReactionService } from '../services/reaction.service';
 import { ReactionComponent } from '../reaction/reaction.component';
+import { ClickOutsideModule } from 'ng4-click-outside';
 
 @NgModule({
   imports: [
     CommonModule,
     ArticlesRoutingModule,
     NgxPaginationModule,
-    BrowserModule
+    BrowserModule,
+    ClickOutsideModule
   ],
   declarations: [
     ShowArticlesComponent,
