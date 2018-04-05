@@ -8,6 +8,8 @@ import { SidebarComponent } from '../sidebar/sidebar.component'
 import {InnerHtmlPipe} from "../shared/inner-html.pipe";
 import {NgxPaginationModule} from 'ngx-pagination';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
+import { ReactionService } from '../services/reaction.service';
+import { ReactionComponent } from '../reaction/reaction.component';
 
 @NgModule({
   imports: [
@@ -21,10 +23,12 @@ import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.comp
     ShowArticleComponent,
     SidebarComponent,
     LoadingSpinnerComponent,
+    ReactionComponent,
     InnerHtmlPipe
   ],
   providers: [
-    Title
+    Title,
+    ReactionService
   ]
 })
 export class ShowArticlesModule {}

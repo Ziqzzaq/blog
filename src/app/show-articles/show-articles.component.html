@@ -23,6 +23,7 @@
         <span *ngIf="authService.user" class="fa fa-edit" (click)="edit(article)"></span>
         <hr>
       </div>
+      <reaction [itemId]="article._id.$oid"></reaction>
     </div>
     <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Newest posts" nextLabel="Older posts"></pagination-controls>
   </div>
