@@ -1,0 +1,10 @@
+.dropzone {
+    border: 2px dotted #000;
+    min-height: 100px;
+    width: 50%;
+    text-align: center;
+}
+i {
+    position:relative;
+    top: 40px;
+}

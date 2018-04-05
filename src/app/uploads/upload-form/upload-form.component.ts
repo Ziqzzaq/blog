@@ -4,6 +4,8 @@ import { UploadService } from '../../services/upload.service';
 
 import { Upload } from '../../models/upload';
 
+import * as _ from "lodash";
+
 @Component({
   selector: 'upload-form',
   templateUrl: 'upload-form.component.html',
@@ -13,6 +15,8 @@ export class UploadFormComponent {
 
   selectedFiles: FileList | null;
   currentUpload: Upload;
+  dropzoneActive:boolean = false;
+
 
   constructor(private upSvc: UploadService) { }
 
@@ -41,5 +45,19 @@ export class UploadFormComponent {
       this.currentUpload = new Upload(file);
       this.upSvc.pushUpload(this.currentUpload);
     });
+  }
+
+  dropzoneState($event: boolean) {
+    this.dropzoneActive = $event;
+  }
+
+  handleDrop(fileList: FileList) {
+
+    let filesIndex = _.range(fileList.length)
+
+    _.each(filesIndex, (idx) => {
+      this.currentUpload = new Upload(fileList[idx]);
+      this.upSvc.pushUpload(this.currentUpload)}
+    )
   }
 }

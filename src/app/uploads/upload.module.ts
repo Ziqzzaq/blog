@@ -6,13 +6,15 @@ import { UploadDetailComponent } from './upload-detail/upload-detail.component'
 import { ClipboardModule } from 'ngx-clipboard';
 import { UploadService } from "../services/upload.service";
 import { CommonModule } from "@angular/common";
+import { FileDropDirective } from "../file-drop.directive";
 
 
 @NgModule({
     declarations: [
         UploadFormComponent,
         UploadListComponent,
-        UploadDetailComponent
+        UploadDetailComponent,
+        FileDropDirective
     ],
     imports: [
         CommonModule,
