@@ -15,8 +15,7 @@ export class AuthService {
 
   user: User;
   users: Observable<any[]>;
-  mouseEvents: Subscription
-  timer: Subscription;
+
 
   constructor(private angularFire: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {
     angularFire.authState.subscribe(user => {
@@ -37,35 +36,9 @@ export class AuthService {
 
   /// Updates status when connection to Firebase starts
   private updateOnConnect() {
-    return this.db.list('.info/connected').snapshotChanges().map((connected) => {
-      return connected.map((a) => {
-        let status = a.payload.val() ? 'online' : 'offline';
-        console.log(a.payload.val());
-        this.updateStatus(status);
-      });
-    });
-
+    return this.updateStatus('online');
   }
 
-/*
-  private updateOnIdle() {
-    this.mouseEvents = Observable
-      .fromEvent(document, 'mousemove')
-      .throttleTime(2000)
-      .subscribe(() => {
-        this.updateStatus('online')
-        this.resetTimer()
-      })
-  }
-*/
-  /// Reset the timer
-  private resetTimer() {
-    if (this.timer) this.timer.unsubscribe()
-    this.timer = Observable.timer(300000)
-      .subscribe(() => {
-        this.updateStatus('away')
-      })
-  }
 
 
   getUsers() {
@@ -120,9 +93,7 @@ export class AuthService {
   }
 
   logout() {
-    this.updateStatus('offline')
-    this.mouseEvents.unsubscribe()
-    this.timer.unsubscribe()
+    this.updateStatus('offline');
     this.angularFire.auth.signOut();
   }
 
