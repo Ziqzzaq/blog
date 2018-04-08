@@ -14,14 +14,13 @@ export class UploadService {
   constructor(private db: AngularFireDatabase) { }
 
   getUploads() {
-    this.uploads = this.db.list(this.basePath).snapshotChanges().map((actions) => {
+    return this.uploads = this.db.list(this.basePath).snapshotChanges().map((actions) => {
       return actions.map((a) => {
         const data = a.payload.val();
         const $key = a.payload.key;
         return { $key, ...data };
       });
     });
-    return this.uploads;
   }
 
   deleteUpload(upload: Upload) {

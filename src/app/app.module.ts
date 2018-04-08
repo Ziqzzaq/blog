@@ -22,6 +22,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { UploadModule } from './uploads/upload.module';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserStatusComponent } from './user-status/user-status.component';
+
 
 
 
@@ -42,6 +45,8 @@ const config = {
     AddUserComponent,
     PageNotFoundComponent,
     ProfileComponent,
+    UsersListComponent,
+    UserStatusComponent,
     FooterComponent
   ],
   imports: [

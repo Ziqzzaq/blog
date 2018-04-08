@@ -1,0 +1,9 @@
+.online>i {
+    color: #00ff00;
+}
+.offline>i {
+    color: #ff0000;
+}
+.away>i {
+    color: #ffff00;
+}

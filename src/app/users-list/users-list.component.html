@@ -1,0 +1,7 @@
+<div *ngFor="let user of users | async">
+  <app-user-status [user]='user'></app-user-status>
+</div>
+
+
+<button (click)="online()">Online</button>
+<button (click)="away()">Away</button>

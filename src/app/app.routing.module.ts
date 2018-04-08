@@ -10,6 +10,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
 import { UploadListComponent } from './uploads/upload-list/upload-list.component';
 import { ShowArticlesModule } from './show-articles/show-articles.module';
+import { UserStatusComponent } from './user-status/user-status.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 const appRoutes: Routes = [
     {
@@ -38,6 +40,11 @@ const appRoutes: Routes = [
     {
         path: 'uploadsList',
         component: UploadListComponent,
+        canActivate: [AuthGuardsService]
+    },
+    {
+        path: 'status',
+        component: UsersListComponent,
         canActivate: [AuthGuardsService]
     },
     {
