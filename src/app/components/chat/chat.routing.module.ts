@@ -1,10 +1,10 @@
-import { UsersListComponent } from './users-list/users-list.component';
+import { ChatMessageComponent } from './chat-message/chat-message.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
 const ChatRoutes: Routes = [
-    { path: 'chat', component: UsersListComponent }
+    { path: 'chat', component: ChatMessageComponent }
 ];
 
 @NgModule({

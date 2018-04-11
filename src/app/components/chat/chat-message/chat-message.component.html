@@ -1,0 +1,14 @@
+<app-users-list></app-users-list>
+
+
+<input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal"
+/>
+
+<div style="text-align: center" class="chat-container" *ngFor="let item of items | async | orderBy: 'date' : true; let i = index">
+  <div *ngIf="i<3">
+    <strong>{{item.name}}</strong>
+
+    <p>{{item.message}}</p>
+    <p>{{item.date}}</p>
+  </div>
+</div>
