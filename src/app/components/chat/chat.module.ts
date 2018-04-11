@@ -8,6 +8,7 @@ import { ChatRoutingModule } from './chat.routing.module';
 import { NgxEditorModule } from 'ngx-editor';
 import { AngularFireModule } from 'angularfire2';
 import { OrderModule } from 'ngx-order-pipe';
+import { ShowArticlesModule } from '../show-articles/show-articles.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { OrderModule } from 'ngx-order-pipe';
     ReactiveFormsModule,
     NgxEditorModule,
     AngularFireModule,
-    OrderModule
+    OrderModule,
+    ShowArticlesModule
   ],
   declarations: [
     UsersListComponent,

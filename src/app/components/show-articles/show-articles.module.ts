@@ -28,6 +28,7 @@ import { ClickOutsideModule } from 'ng4-click-outside';
     SidebarComponent,
     InnerHtmlPipe
   ],
-  providers: [Title, ReactionService]
+  providers: [Title, ReactionService],
+  exports: [InnerHtmlPipe]
 })
 export class ShowArticlesModule {}
