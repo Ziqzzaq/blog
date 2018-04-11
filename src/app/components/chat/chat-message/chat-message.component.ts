@@ -52,4 +52,8 @@ export class ChatMessageComponent implements OnInit {
       });
     this.msgVal = '';
   }
+
+  clearMessages() {
+    this.db.list(this.basePath).remove();
+  }
 }

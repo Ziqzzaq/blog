@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -8,8 +8,19 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  constructor() {
+export class AppComponent implements OnInit {
+  constructor(
+    private router: Router
+  ) {
   }
 
+
+  ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0);
+  });
+  }
 }
