@@ -45,7 +45,9 @@ export class UploadService {
       (snapshot: firebase.storage.UploadTaskSnapshot) => {
         // upload in progress
         const snap = snapshot;
-        upload.progress = snap.bytesTransferred / snap.totalBytes * 100;
+        upload.progress = Math.round(
+          snap.bytesTransferred / snap.totalBytes * 100
+        );
       },
       error => {
         // upload failed

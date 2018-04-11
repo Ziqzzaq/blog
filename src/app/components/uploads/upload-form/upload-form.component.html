@@ -30,7 +30,7 @@
 
     <h2>Drop File</h2>
 
-    <div class="dropzone" fileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)" [ngClass]="{'active': dropzoneActive}">
+    <div class="dropzone" app-fileDrop (filesDropped)="handleDrop($event)" (filesHovered)="dropzoneState($event)" [ngClass]="{'active': dropzoneActive}">
 
       <i class="fa fa-cloud-upload fa-2x"></i>
 
