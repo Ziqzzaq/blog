@@ -12,7 +12,11 @@ export class ArticleService {
   name = [];
   private articlesListObs = new BehaviorSubject<Array<Article>>([]);
   private articleObs: Subject<Article>;
-  constructor(private httpService: HttpService, protected storage: AsyncLocalStorage, private router: Router) {
+  constructor(
+    private httpService: HttpService,
+    protected storage: AsyncLocalStorage,
+    private router: Router
+  ) {
     this.articleObs = new Subject<Article>();
     this.init();
   }
@@ -27,20 +31,23 @@ export class ArticleService {
     this.httpService.saveArticles(article);
   }
 
-  update(article: Article, artId:string){
+  update(article: Article, artId: string) {
     this.httpService.updateArticle(article, artId);
-    console.log("In article service"+article);
+    console.log('In article service' + article);
   }
 
-  saveViews(article: Article, artId:string){
+  saveViews(article: Article, artId: string) {
     this.httpService.saveViews(article, artId);
   }
   saveLocalArticle(article: Article) {
-    this.storage.setItem('article',article).subscribe((e) => {
-      this.router.navigate(['./addArticle']);
-    }, (e) => {
-      alert("Edycja artykułu niedostępna");
-    });
+    this.storage.setItem('article', article).subscribe(
+      e => {
+        this.router.navigate(['./addArticle']);
+      },
+      e => {
+        alert('Edycja artykułu niedostępna');
+      }
+    );
   }
 
   getArticle(): Observable<Article> {
@@ -49,8 +56,8 @@ export class ArticleService {
 
   setArticle(artId): void {
     this.httpService.getArticleById(artId).subscribe(article => {
-    this.articleObs.next(article);
-    })
+      this.articleObs.next(article);
+    });
   }
 
   getArticlesListObs(): Observable<Array<Article>> {
@@ -70,7 +77,7 @@ export class ArticleService {
     });
   }
 
-  sortArticlesByViews(articlesList: Array<Article>){
+  sortArticlesByViews(articlesList: Array<Article>) {
     articlesList.sort((a: Article, b: Article) => {
       return a.views - b.views;
     });

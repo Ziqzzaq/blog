@@ -1,32 +1,22 @@
+import { FooterComponent } from './components/footer/footer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpService } from './services/http.service';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'
-import { ArticleService } from './services/article.service'
-import { AuthService } from './auth/auth.service'
-import { AuthGuardsService } from './auth/auth-guards.service'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ArticleService } from './services/article.service';
+import { AuthService } from './auth/auth.service';
+import { AuthGuardsService } from './auth/auth-guards.service';
 import { AppComponent } from './app.component';
-import { AddArticleComponent } from './add-article/add-article.component';
-import { LoginComponent } from './login/login.component'
-import { AddUserComponent } from './add-user/add-user.component'
-import { FooterComponent } from './footer/footer.component'
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
-import { ProfileComponent } from './profile/profile.component'
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app.routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { NgxEditorModule } from 'ngx-editor';
 import { AlertModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { UploadModule } from './uploads/upload.module';
-import { UsersListComponent } from './users-list/users-list.component';
-import { UserStatusComponent } from './user-status/user-status.component';
-
-
-
+import { UploadModule } from './components/uploads/upload.module';
 
 const config = {
   apiKey: 'AIzaSyCYwMclrQ62cG0AXTkybVlm_aRvcy4JiWY',
@@ -40,31 +30,23 @@ const config = {
 @NgModule({
   declarations: [
     AppComponent,
-    AddArticleComponent,
-    LoginComponent,
-    AddUserComponent,
-    PageNotFoundComponent,
-    ProfileComponent,
-    UsersListComponent,
-    UserStatusComponent,
-    FooterComponent
+    FooterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UploadModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AsyncLocalStorageModule,
-    NgxEditorModule,
     AlertModule.forRoot(),
     AngularFontAwesomeModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
-  providers: [HttpService,ArticleService,AuthService,AuthGuardsService],
+  providers: [HttpService, ArticleService, AuthService, AuthGuardsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,55 @@
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="section col-md-4">
+        <div class="about">
+          <p class="header">About Blog</p>
+          <p class="about-blog">
+            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec rutrum congue leo eget malesuada. Sed porttitor lectus
+            nibh.
+          </p>
+        </div>
+      </div>
+      <div class="section col-md-4">
+        <div class="about">
+          <p class="header">About me</p>
+          <p class="about-me">
+            Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla quis lorem ut libero malesuada feugiat. Nulla quis lorem
+            ut libero malesuada feugiat.
+          </p>
+        </div>
+      </div>
+      <div class="section col-md-4">
+        <div class="tags">
+          <p class="header">Popular TAGS</p>
+          <p class="about-tags">
+            <li>
+              <a routerLink="/">Home</a>
+            </li>
+            <li *ngIf="authService.user">
+              <a routerLink="/chat">Chat</a>
+            </li>
+            <li *ngIf="authService.user">
+              <a routerLink="/uploadsList">Upload List</a>
+            </li>
+            <li *ngIf="authService.user">
+              <a routerLink="addArticle">Add article</a>
+            </li>
+            <li *ngIf="authService.user">
+              <a routerLink="addUser">Add User</a>
+            </li>
+            <li *ngIf="authService.user">
+              <a routerLink="profile">Profile</a>
+            </li>
+            <li *ngIf="!authService.user">
+              <a routerLink="login">Login</a>
+            </li>
+            <li *ngIf="authService.user">
+              <a (click)="logout()">Logout</a>
+            </li>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

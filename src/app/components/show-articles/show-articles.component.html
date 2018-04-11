@@ -1,0 +1,33 @@
+<header>
+</header>
+<div class="row">
+  <div class="posts col-md-8">
+    <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+    <div class="post" *ngFor="let article of articlesList | paginate: { itemsPerPage: 3, currentPage: p }">
+      <p class="post-category">Traveling</p>
+      <h1 class="post-name">{{article.name}}</h1>
+      <div class="section-author-date">
+        <p class="post-author">
+          <i class="fa fa-user"></i>{{article.userName}}</p>
+        <p class="post-created">
+          <i class="fa fa-calendar"></i>{{article.created | date: 'dd-MM-yyyy'}}</p>
+      </div>
+      <p class="post-description">{{article.description}}</p>
+      <a class="post-read" [routerLink]="['/article', article._id.$oid]">Read more</a>
+      <div class="share">
+        <span class="fa fa-facebook"></span>
+        <span class="fa fa-twitter"></span>
+        <span class="fa fa-youtube-play"></span>
+        <span class="fa fa-tumblr"></span>
+        <span *ngIf="authService.user" class="fa fa-trash" (click)="delete(article._id.$oid)"></span>
+        <span *ngIf="authService.user" class="fa fa-edit" (click)="edit(article)"></span>
+        <hr>
+      </div>
+      <app-reaction [itemId]="article._id.$oid"></app-reaction>
+    </div>
+    <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Newest posts" nextLabel="Older posts"></pagination-controls>
+  </div>
+  <div class="sidebar col-md-4">
+    <app-sidebar></app-sidebar>
+  </div>
+</div>

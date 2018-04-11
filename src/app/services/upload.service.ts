@@ -6,43 +6,48 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UploadService {
-
   basePath = 'uploads';
   uploadsRef: AngularFireList<Upload>;
   uploads: Observable<Upload[]>;
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase) {}
 
   getUploads() {
-    return this.uploads = this.db.list(this.basePath).snapshotChanges().map((actions) => {
-      return actions.map((a) => {
-        const data = a.payload.val();
-        const $key = a.payload.key;
-        return { $key, ...data };
-      });
-    });
+    return (this.uploads = this.db
+      .list(this.basePath)
+      .snapshotChanges()
+      .map(actions => {
+        return actions.map(a => {
+          const data = a.payload.val();
+          const $key = a.payload.key;
+          return { $key, ...data };
+        });
+      }));
   }
 
   deleteUpload(upload: Upload) {
     this.deleteFileData(upload.$key)
-    .then( () => {
-      this.deleteFileStorage(upload.name);
-    })
-    .catch((error) => console.log(error));
+      .then(() => {
+        this.deleteFileStorage(upload.name);
+      })
+      .catch(error => console.log(error));
   }
 
   // Executes the file uploading to firebase https://firebase.google.com/docs/storage/web/upload-files
   pushUpload(upload: Upload) {
     const storageRef = firebase.storage().ref();
-    const uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
+    const uploadTask = storageRef
+      .child(`${this.basePath}/${upload.file.name}`)
+      .put(upload.file);
 
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot: firebase.storage.UploadTaskSnapshot) =>  {
+    uploadTask.on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot: firebase.storage.UploadTaskSnapshot) => {
         // upload in progress
         const snap = snapshot;
-        upload.progress = (snap.bytesTransferred / snap.totalBytes) * 100
+        upload.progress = snap.bytesTransferred / snap.totalBytes * 100;
       },
-      (error) => {
+      error => {
         // upload failed
         console.log(error);
       },
@@ -56,7 +61,7 @@ export class UploadService {
         } else {
           console.error('No download URL!');
         }
-      },
+      }
     );
   }
 
@@ -74,6 +79,6 @@ export class UploadService {
   // So the name serves as a unique key
   private deleteFileStorage(name: string) {
     const storageRef = firebase.storage().ref();
-    storageRef.child(`${this.basePath}/${name}`).delete()
+    storageRef.child(`${this.basePath}/${name}`).delete();
   }
 }
