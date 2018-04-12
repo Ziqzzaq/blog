@@ -13,6 +13,7 @@ import 'rxjs/add/operator/do';
 export class ChatMessageComponent implements OnInit {
   items: Observable<any[]>;
   name: any;
+  nameTyping: string;
   msgVal = '';
   basePath = '/messages';
   typing = false;
@@ -37,11 +38,18 @@ export class ChatMessageComponent implements OnInit {
     this.angularFire.authState.subscribe(auth => {
       if (auth) {
         this.name = auth;
+        this.authService.isTyping().subscribe( value => {
+          console.log(this.name.displayName);
+          if (this.name.displayName == value[0]) {
+            this.typing = false;
+          } else {
+         console.log(value[0]);
+          this.nameTyping = value[0];
+         console.log(this.typing = value[1].toString() == 'true');
+          this.typing = value[1].toString() == 'true';
+          }
+        });
       }
-    });
-
-    this.authService.isTyping().subscribe( value => {
-     this.typing = value.toString() == 'true';
     });
   }
 

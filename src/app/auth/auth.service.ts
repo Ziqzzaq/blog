@@ -62,7 +62,7 @@ export class AuthService {
       .map(actions => {
         return actions.map(typing => {
           const data = typing.payload.val();
-          return data;
+          return data ;
         });
       }));
   }
@@ -70,7 +70,7 @@ export class AuthService {
   setTyping(state) {
     this.db
       .object(`isTyping/`)
-      .update({ status: `${state}`});
+      .update({ status: `${state}`, name: this.user.displayName });
   }
 
 

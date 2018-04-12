@@ -4,7 +4,7 @@
 <input [(ngModel)]="msgVal" type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)"
 />
 <div class="typing" *ngIf="this.typing">
-  Someone is typing
+  {{nameTyping}}
   <app-typing-animation></app-typing-animation>
 </div>
 
