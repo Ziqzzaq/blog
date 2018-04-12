@@ -14,6 +14,7 @@ import * as firebase from 'firebase/app';
 export class AuthService {
   user: User;
   users: Observable<any[]>;
+  typing;
 
   constructor(
     private angularFire: AngularFireAuth,
@@ -54,6 +55,25 @@ export class AuthService {
       }));
   }
 
+  isTyping() {
+    return (this.typing = this.db
+      .list('isTyping')
+      .snapshotChanges()
+      .map(actions => {
+        return actions.map(typing => {
+          const data = typing.payload.val();
+          return data;
+        });
+      }));
+  }
+
+  setTyping(state) {
+    this.db
+      .object(`isTyping/`)
+      .update({ status: `${state}`});
+  }
+
+
   setOnline() {
     this.db
       .object(`users/` + this.user.uid)
@@ -85,8 +105,7 @@ export class AuthService {
   }
 
   loginInAnonymously() {
-    this.angularFire.auth.signInAnonymously().catch(function(error) {
-    });
+    this.angularFire.auth.signInAnonymously().catch(function(error) {});
   }
 
   addUser(email: string, password: string, name: string) {

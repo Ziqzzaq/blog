@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from './../../../auth/auth.service';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-chat-message',
@@ -16,12 +15,14 @@ export class ChatMessageComponent implements OnInit {
   name: any;
   msgVal = '';
   basePath = '/messages';
+  typing = false;
+  input$;
 
   constructor(
     public db: AngularFireDatabase,
-    private angularFire: AngularFireAuth
+    private angularFire: AngularFireAuth,
+    private authService: AuthService
   ) {
-    console.log(new Date());
     this.items = db
       .list(this.basePath)
       .snapshotChanges()
@@ -38,20 +39,35 @@ export class ChatMessageComponent implements OnInit {
         this.name = auth;
       }
     });
+
+    this.authService.isTyping().subscribe( value => {
+     this.typing = value.toString() == 'true';
+    });
   }
 
   ngOnInit() {}
 
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit() {
+    const input = document.getElementById('message');
+    this.input$ = Observable.fromEvent(input, 'input')
+    .do(() => this.showTyping())
+    .debounceTime(500)
+    .subscribe(() => this.showIdle());
+  }
+
   chatSend(theirMessage: string) {
-    this.db
-      .list(this.basePath)
-      .push({
-        message: theirMessage,
-        name: this.name.displayName,
-        date: new Date().toString()
-      });
+    this.db.list(this.basePath).push({
+      message: theirMessage,
+      name: this.name.displayName,
+      date: new Date().toString()
+    });
     this.msgVal = '';
   }
+
+  showTyping = () => this.authService.setTyping(true);
+
+  showIdle = () =>  this.authService.setTyping(false);
 
   clearMessages() {
     this.db.list(this.basePath).remove();

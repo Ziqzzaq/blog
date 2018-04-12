@@ -9,7 +9,7 @@ import { NgxEditorModule } from 'ngx-editor';
 import { AngularFireModule } from 'angularfire2';
 import { OrderModule } from 'ngx-order-pipe';
 import { ShowArticlesModule } from '../show-articles/show-articles.module';
-
+import { TypingAnimationComponent } from '../typing-animation/typing-animation.component';
 
 @NgModule({
   imports: [
@@ -25,7 +25,8 @@ import { ShowArticlesModule } from '../show-articles/show-articles.module';
   declarations: [
     UsersListComponent,
     UserStatusComponent,
-    ChatMessageComponent
+    ChatMessageComponent,
+    TypingAnimationComponent
   ],
   providers: []
 })

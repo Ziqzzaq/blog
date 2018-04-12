@@ -1,12 +1,9 @@
 <app-users-list></app-users-list>
 
 
-<input type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal"
-/>
-<div class="editor">
-  <app-ngx-editor [spellcheck]="true" [(ngModel)]="msgVal"></app-ngx-editor>
-  <button (click)="chatSend(msgVal)">Send</button>
-</div>
+<input type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)"/>
+<app-typing-animation *ngIf="this.typing" ></app-typing-animation>
+
 
 <div style="text-align: center" class="chat-container" *ngFor="let item of items | async | orderBy: 'date' : true; let i = index">
   <div *ngIf="i<3">
