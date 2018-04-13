@@ -12,7 +12,7 @@ import 'rxjs/add/operator/do';
 })
 export class ChatMessageComponent implements OnInit {
   items: Observable<any[]>;
-  name: any;
+  user: any;
   nameTyping: string;
   msgVal = '';
   basePath = '/messages';
@@ -28,24 +28,13 @@ export class ChatMessageComponent implements OnInit {
     this.audio = new Audio();
     this.audio.src = '../../../assets/sound/message.mp3';
     this.audio.load();
-    this.items = db
-      .list(this.basePath)
-      .snapshotChanges()
-      .map(actions => {
-        return actions.map(a => {
-          const message = a.payload.val();
-          message.date = new Date(message.date);
-          this.audio.play();
-          return message;
-        });
-      });
 
     this.angularFire.authState.subscribe(auth => {
       if (auth) {
-        this.name = auth;
+        this.user = auth;
         this.authService.isTyping().subscribe( value => {
-          console.log(this.name.displayName);
-          if (this.name.displayName == value[0]) {
+          console.log(this.user.displayName);
+          if (this.user.displayName == value[0]) {
             this.typing = false;
           } else {
          console.log(value[0]);
@@ -56,6 +45,17 @@ export class ChatMessageComponent implements OnInit {
         });
       }
     });
+    this.items = db
+      .list(this.basePath)
+      .snapshotChanges()
+      .map(actions => {
+        return actions.map(a => {
+          const message = a.payload.val();
+          message.date = new Date(message.date);
+          this.soundMessage();
+          return message;
+        });
+      });
   }
 
   ngOnInit() {}
@@ -71,10 +71,14 @@ export class ChatMessageComponent implements OnInit {
   chatSend(theirMessage: string) {
     this.db.list(this.basePath).push({
       message: theirMessage,
-      name: this.name.displayName,
+      name: this.user.displayName,
       date: new Date().toString()
     });
     this.msgVal = '';
+  }
+
+  soundMessage() {
+    this.audio.play();
   }
 
   showTyping = () => this.authService.setTyping(true);

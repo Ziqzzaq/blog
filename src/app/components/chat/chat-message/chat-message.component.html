@@ -8,9 +8,9 @@
 </div>
 
 <div class="chat-container" *ngFor="let item of items | async | orderBy: 'date' : true; let i = index">
-  <div class="message" *ngIf="i<3">
+  <div class="messages" *ngIf="i<5">
 
-    <span [ngSwitch]="name.displayName">
+    <span [ngSwitch]="user.displayName">
 
     <span *ngSwitchCase="item.name" class="my-message">
     <span class="sender-name">{{item.name}}</span><span class="message-content">{{item.message}}</span>

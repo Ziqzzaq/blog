@@ -2,8 +2,6 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ReactionService } from '../../services/reaction.service';
 import * as _ from 'lodash';
 import { AuthService } from '../../auth/auth.service';
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-reaction',
   templateUrl: './reaction.component.html',
@@ -24,7 +22,6 @@ export class ReactionComponent implements OnInit, OnDestroy {
   constructor(
     private reactionSvc: ReactionService,
     private authService: AuthService,
-    private router: Router
   ) {}
 
   ngOnInit() {
