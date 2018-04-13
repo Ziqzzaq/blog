@@ -3,7 +3,6 @@ import { ChatModule } from './components/chat/chat.module';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { AddArticleModule } from './components/add-article/add-article.module';
-import { AuthGuardsService } from './auth/auth-guards.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProfileModule } from './components/profile/profile.module';
 import { LoginModule } from './components/login/login.module';

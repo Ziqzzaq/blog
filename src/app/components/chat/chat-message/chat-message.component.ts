@@ -55,7 +55,6 @@ export class ChatMessageComponent implements OnInit {
 
   ngOnInit() {}
 
-  // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
     const input = document.getElementById('message');
     this.input$ = Observable.fromEvent(input, 'input')
