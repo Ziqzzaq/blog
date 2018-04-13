@@ -1,7 +1,7 @@
 import { AuthService } from './../../../auth/auth.service';
-import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 
@@ -22,7 +22,7 @@ export class ChatMessageComponent implements OnInit {
   constructor(
     public db: AngularFireDatabase,
     private angularFire: AngularFireAuth,
-    private authService: AuthService
+    public authService: AuthService
   ) {
     this.items = db
       .list(this.basePath)

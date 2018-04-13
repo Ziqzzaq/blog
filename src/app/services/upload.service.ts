@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Upload } from '../models/upload';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UploadService {
   basePath = 'uploads';
-  uploadsRef: AngularFireList<Upload>;
   uploads: Observable<Upload[]>;
 
   constructor(private db: AngularFireDatabase) {}

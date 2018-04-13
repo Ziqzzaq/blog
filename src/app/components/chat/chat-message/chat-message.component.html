@@ -1,20 +1,28 @@
 <app-users-list></app-users-list>
-
+<button (click)="clearMessages()">Clear Messages</button>
 
 <input [(ngModel)]="msgVal" type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)"
 />
 <div class="typing" *ngIf="this.typing">
-  {{nameTyping}}
-  <app-typing-animation></app-typing-animation>
+  {{nameTyping}}<app-typing-animation></app-typing-animation>
 </div>
 
-<div style="text-align: center" class="chat-container" *ngFor="let item of items | async | orderBy: 'date' : true; let i = index">
-  <div *ngIf="i<3">
-    <strong>{{item.name}}</strong>
+<div class="chat-container" *ngFor="let item of items | async | orderBy: 'date' : true; let i = index">
+  <div class="message" *ngIf="i<3">
 
-    <p [innerHTML]="item.message | innerHtml"></p>
-    <p>{{item.date}}</p>
+    <span [ngSwitch]="name.displayName">
+
+    <span *ngSwitchCase="item.name" class="my-message">
+    <span class="sender-name">{{item.name}}</span><span class="message-content">{{item.message}}</span>
+    </span>
+
+    <span *ngSwitchDefault class="other-message">
+      <span class="sender-name">{{item.name}}</span><span class="message-content">{{item.message}}</span>
+    </span>
+
+  </span>
+
   </div>
 </div>
 
-<button (click)="clearMessages()">Clear Messages</button>
+
