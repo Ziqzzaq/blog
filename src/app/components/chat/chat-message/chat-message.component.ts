@@ -18,12 +18,16 @@ export class ChatMessageComponent implements OnInit {
   basePath = '/messages';
   typing = false;
   input$;
+  audio;
 
   constructor(
     public db: AngularFireDatabase,
     private angularFire: AngularFireAuth,
     public authService: AuthService
   ) {
+    this.audio = new Audio();
+    this.audio.src = '../../../assets/sound/message.mp3';
+    this.audio.load();
     this.items = db
       .list(this.basePath)
       .snapshotChanges()
@@ -31,6 +35,7 @@ export class ChatMessageComponent implements OnInit {
         return actions.map(a => {
           const message = a.payload.val();
           message.date = new Date(message.date);
+          this.audio.play();
           return message;
         });
       });
