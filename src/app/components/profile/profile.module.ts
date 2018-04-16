@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProfileRoutingModule } from './profile.routing.module';
+import {ProfileService} from '../../services/profile.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { ProfileRoutingModule } from './profile.routing.module';
   declarations: [
     ProfileComponent
   ],
-  providers: []
+  providers: [ProfileService]
 })
 export class ProfileModule {}

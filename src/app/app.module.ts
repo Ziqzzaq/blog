@@ -16,7 +16,7 @@ import { AlertModule } from 'ngx-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { UploadModule } from './components/uploads/upload.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const config = {
   apiKey: 'AIzaSyCYwMclrQ62cG0AXTkybVlm_aRvcy4JiWY',
@@ -31,7 +31,8 @@ const config = {
   declarations: [
     AppComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
