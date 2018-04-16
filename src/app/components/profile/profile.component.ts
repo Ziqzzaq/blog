@@ -16,8 +16,19 @@ export class ProfileComponent implements OnInit {
   userEmail = this.authService.user.email;
   selectedFiles: FileList | null;
   currentUpload: Upload;
+  photoName;
+  photoKey;
 
-  constructor(private authService: AuthService, private profileService: ProfileService) { }
+  constructor(private authService: AuthService, private profileService: ProfileService) {
+    this.profileService.getPhoto().subscribe( value => {
+         console.log(value[0] !== undefined);
+         if (value[0] !== undefined) {
+           this.photoName = value[0].name;
+           this.photoKey = value[0].$key;
+           console.log(this.photoKey);
+         }
+    });
+  }
 
   ngOnInit() {
 
@@ -40,6 +51,9 @@ export class ProfileComponent implements OnInit {
   }
 
   updatePhoto() {
+    if ((this.photoName !== undefined) && (this.photoKey !== undefined)) {
+      this.profileService.deletePhoto(this.photoName, this.photoKey);
+    }
     const file = this.selectedFiles;
     if (file && file.length === 1) {
       this.currentUpload = new Upload(file.item(0));
@@ -47,6 +61,10 @@ export class ProfileComponent implements OnInit {
     } else {
       console.error('No file found!');
     }
+  }
+
+  deletePhoto() {
+    this.profileService.deleteFileData(this.photoKey);
   }
 
 }

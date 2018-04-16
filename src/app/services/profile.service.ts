@@ -103,4 +103,22 @@ export class ProfileService {
         });
       }));
   }
+
+  deletePhoto(photoName, photoKey) {
+    this.deleteFileData(photoKey)
+      .then(() => {
+        this.deleteFileStorage(photoName);
+      })
+      .catch(error => console.log(error));
+  }
+
+  deleteFileData(key: string) {
+    console.log(`${this.basePath}/${this.user.uid}/${key}`);
+    return this.db.list(`${this.basePath}/${this.user.uid}/`).remove(key);
+  }
+
+  private deleteFileStorage(name: string) {
+    const storageRef = firebase.storage().ref();
+    storageRef.child(`${this.basePath}/${this.user.uid}/${name}`).delete();
+  }
 }

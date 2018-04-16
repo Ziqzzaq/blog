@@ -73,6 +73,7 @@ export class UploadService {
 
   // Writes the file details to the realtime db
   private deleteFileData(key: string) {
+    console.log(`${this.basePath}/${key}`);
     return this.db.list(`${this.basePath}/`).remove(key);
   }
 
