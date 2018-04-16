@@ -12,6 +12,7 @@ export class ProfileService {
   user: User;
   photo: Observable<any[]>;
   basePath = 'face';
+  photoURL: string;
 
   constructor(private angularFire: AngularFireAuth, private db: AngularFireDatabase) {
     angularFire.authState.subscribe(user => {

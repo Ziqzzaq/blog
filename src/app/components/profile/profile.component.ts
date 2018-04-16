@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { NgForm } from '@angular/forms';
-import {ProfileService} from '../../services/profile.service';
-import {Upload} from '../../models/upload';
+import { ProfileService } from '../../services/profile.service';
+import { Upload } from '../../models/upload';
 
 @Component({
   selector: 'app-profile',
@@ -16,8 +16,9 @@ export class ProfileComponent implements OnInit {
   userEmail = this.authService.user.email;
   selectedFiles: FileList | null;
   currentUpload: Upload;
-  photoName;
-  photoKey;
+  photoName: string;
+  photoKey: string;
+  photoURL: string;
 
   constructor(private authService: AuthService, private profileService: ProfileService) {
     if (this.authService.user !== null) {
@@ -26,7 +27,8 @@ export class ProfileComponent implements OnInit {
         if (value[0] !== undefined) {
           this.photoName = value[0].name;
           this.photoKey = value[0].$key;
-          console.log(this.photoKey);
+          this.photoURL = value[0].url;
+          console.log(this.photoURL);
         }
       });
     }
@@ -52,7 +54,7 @@ export class ProfileComponent implements OnInit {
     this.selectedFiles = ($event.target as HTMLInputElement).files;
   }
 
-  updatePhoto() {
+  updatePhoto() { 
     if ((this.photoName !== undefined) && (this.photoKey !== undefined)) {
       this.profileService.deletePhoto(this.photoName, this.photoKey);
     }
