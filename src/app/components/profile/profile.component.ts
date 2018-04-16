@@ -20,14 +20,16 @@ export class ProfileComponent implements OnInit {
   photoKey;
 
   constructor(private authService: AuthService, private profileService: ProfileService) {
-    this.profileService.getPhoto().subscribe( value => {
-         console.log(value[0] !== undefined);
-         if (value[0] !== undefined) {
-           this.photoName = value[0].name;
-           this.photoKey = value[0].$key;
-           console.log(this.photoKey);
-         }
-    });
+    if (this.authService.user !== null) {
+      this.profileService.getPhoto().subscribe(value => {
+        console.log(value[0] !== undefined);
+        if (value[0] !== undefined) {
+          this.photoName = value[0].name;
+          this.photoKey = value[0].$key;
+          console.log(this.photoKey);
+        }
+      });
+    }
   }
 
   ngOnInit() {
@@ -61,10 +63,6 @@ export class ProfileComponent implements OnInit {
     } else {
       console.error('No file found!');
     }
-  }
-
-  deletePhoto() {
-    this.profileService.deleteFileData(this.photoKey);
   }
 
 }

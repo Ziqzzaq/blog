@@ -16,8 +16,11 @@ export class NavbarComponent implements OnInit {
   constructor(private angularFire: AngularFireAuth, private profileService: ProfileService) {
     angularFire.authState.subscribe(user => {
       this.user = user;
-      this.photoURL = user.photoURL;
-      this.photos = this.profileService.getPhoto();
+      console.log(this.user);
+      if (this.user !== null) {
+        this.photoURL = user.photoURL;
+        this.photos = this.profileService.getPhoto();
+      }
     });
   }
 

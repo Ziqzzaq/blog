@@ -21,3 +21,6 @@ nav{
 .user-name{
   color: #fff;
 }
+.user-img>img{
+  border-radius: 50%;
+}
