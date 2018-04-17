@@ -10,6 +10,7 @@ import { AngularFireModule } from 'angularfire2';
 import { OrderModule } from 'ngx-order-pipe';
 import { ShowArticlesModule } from '../show-articles/show-articles.module';
 import { TypingAnimationComponent } from '../typing-animation/typing-animation.component';
+import {ChatService} from '../../services/chat.service';
 
 @NgModule({
   imports: [
@@ -28,6 +29,6 @@ import { TypingAnimationComponent } from '../typing-animation/typing-animation.c
     ChatMessageComponent,
     TypingAnimationComponent
   ],
-  providers: []
+  providers: [ChatService]
 })
 export class ChatModule {}

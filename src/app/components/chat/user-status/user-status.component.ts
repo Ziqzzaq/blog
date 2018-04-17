@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { User } from 'firebase';
+import {Component, OnInit, Input} from '@angular/core';
+import {ChatService} from '../../../services/chat.service';
 
 @Component({
   selector: 'app-user-status',
@@ -7,11 +7,10 @@ import { User } from 'firebase';
   styleUrls: ['./user-status.component.css']
 })
 export class UserStatusComponent implements OnInit {
-
-  constructor() { }
-
   @Input() user;
+
+  constructor(private chatService: ChatService) {}
+
   ngOnInit() {
   }
-
 }
