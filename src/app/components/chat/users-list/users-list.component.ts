@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AuthService} from '../../../auth/auth.service';
-import {ChatService} from '../../../services/chat.service';
 
 @Component({
   selector: 'app-users-list',
@@ -12,24 +11,27 @@ export class UsersListComponent implements OnInit {
 
   users: Observable<any[]>;
 
-  constructor(private authService: AuthService, private chatService: ChatService) {
+  constructor(private authService: AuthService) {
 
   }
 
   ngOnInit() {
-    this.users = this.chatService.getUsers();
+    this.users = this.authService.getUsers();
+    this.authService.getUsers().subscribe( value => {
+      console.log(value);
+    });
   }
 
 
   online() {
-    this.authService.setOnline();
+    this.authService.updateStatus('online');
   }
 
   away() {
-    this.authService.setAway();
+    this.authService.updateStatus('away');
   }
 
   offline() {
-    this.authService.setOffline();
+    this.authService.updateStatus('offline');
   }
 }

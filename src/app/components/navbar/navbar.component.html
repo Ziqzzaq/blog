@@ -4,6 +4,6 @@
   </div>
   <div *ngIf="user" class="user-info">
     <span class="user-name">{{user.displayName}}</span>
-    <span *ngFor="let photo of photos | async" class="user-img"><img src={{photo.url}} alt="User image"></span>
+    <span *ngFor="let photo of photos | async" class="user-img"><img src={{photo}} alt="User image"></span>
   </div>
 </nav>

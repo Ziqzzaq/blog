@@ -31,7 +31,7 @@ export class AuthService {
     if (this.user) {
       return this.db
         .object(`users/` + this.user.uid)
-        .update({ status: status, name: this.user.displayName });
+        .update({ status: status});
     }
   }
 
@@ -71,25 +71,6 @@ export class AuthService {
       .update({ status: `${state}`, name: this.user.displayName });
   }
 
-
-  setOnline() {
-    this.db
-      .object(`users/` + this.user.uid)
-      .update({ status: 'online', name: this.user.displayName });
-  }
-
-  setAway() {
-    this.db
-      .object(`users/` + this.user.uid)
-      .update({ status: 'away', name: this.user.displayName });
-  }
-
-  setOffline() {
-    this.db
-      .object(`users/` + this.user.uid)
-      .update({ status: 'offline', name: this.user.displayName });
-  }
-
   login(email: string, password: string) {
     this.angularFire.auth
       .signInWithEmailAndPassword(email, password)
@@ -102,9 +83,6 @@ export class AuthService {
       });
   }
 
-  loginInAnonymously() {
-    this.angularFire.auth.signInAnonymously().catch(function(error) {});
-  }
 
   addUser(email: string, password: string, name: string) {
     this.angularFire.auth
@@ -122,7 +100,11 @@ export class AuthService {
             error => {
               console.log(error);
             }
-          );
+          ).then( () => {
+          this.db
+            .object(`users/${this.user.uid}`)
+            .update({status: 'online', name: this.user.displayName, photo: {url: this.user.photoURL}});
+        });
       })
       .catch(err => {
         console.log(err);

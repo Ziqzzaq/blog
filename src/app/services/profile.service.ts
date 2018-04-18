@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
-import { User } from '@firebase/auth-types';
+import {User} from '@firebase/auth-types';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Upload} from '../models/upload';
 import {Observable} from 'rxjs/Observable';
@@ -11,14 +11,14 @@ export class ProfileService {
 
   user: User;
   photo: Observable<any[]>;
-  basePath = 'face';
-  photoURL: string;
+  basePath = 'users';
 
   constructor(private angularFire: AngularFireAuth, private db: AngularFireDatabase) {
     angularFire.authState.subscribe(user => {
       this.user = user;
     });
   }
+
   updateName(newName: string) {
     this.user
       .updateProfile({
@@ -47,10 +47,10 @@ export class ProfileService {
   updatePassword(newPassword) {
     this.user
       .updatePassword(newPassword)
-      .then(function() {
+      .then(function () {
         console.log('Succesful update password');
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
@@ -58,7 +58,7 @@ export class ProfileService {
   pushUpload(upload: Upload) {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef
-      .child(`${this.basePath}/${this.user.uid}/${upload.file.name}`)
+      .child(`users/${this.user.uid}/${upload.file.name}`)
       .put(upload.file);
 
     uploadTask.on(
@@ -89,33 +89,25 @@ export class ProfileService {
   }
 
   private saveFileData(upload: Upload) {
-    this.db.list(`${this.basePath}/${this.user.uid}`).push(upload);
+    this.db
+      .object(`${this.basePath}/${this.user.uid}`)
+      .update({status: 'online', name: this.user.displayName, photo: {url: upload.url, name: upload.name}});
   }
 
   getPhoto() {
     return (this.photo = this.db
-      .list(`${this.basePath}/${this.user.uid}`)
+      .list(`${this.basePath}/${this.user.uid}/photo`)
       .snapshotChanges()
       .map(actions => {
         return actions.map(a => {
           const data = a.payload.val();
-          const $key = a.payload.key;
-          return { $key, ...data };
+          return data;
         });
       }));
   }
 
-  deletePhoto(photoName, photoKey) {
-    this.deleteFileData(photoKey)
-      .then(() => {
-        this.deleteFileStorage(photoName);
-      })
-      .catch(error => console.log(error));
-  }
-
-  deleteFileData(key: string) {
-    console.log(`${this.basePath}/${this.user.uid}/${key}`);
-    return this.db.list(`${this.basePath}/${this.user.uid}/`).remove(key);
+  deletePhoto(photoName) {
+    this.deleteFileStorage(photoName);
   }
 
   private deleteFileStorage(name: string) {

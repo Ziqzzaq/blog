@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
-import { NgForm } from '@angular/forms';
-import { ProfileService } from '../../services/profile.service';
-import { Upload } from '../../models/upload';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../auth/auth.service';
+import {NgForm} from '@angular/forms';
+import {ProfileService} from '../../services/profile.service';
+import {Upload} from '../../models/upload';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-profile',
@@ -17,18 +18,19 @@ export class ProfileComponent implements OnInit {
   selectedFiles: FileList | null;
   currentUpload: Upload;
   photoName: string;
-  photoKey: string;
-  photoURL: string;
+  photoURL = '../assets/default-user.png';
 
   constructor(private authService: AuthService, private profileService: ProfileService) {
     if (this.authService.user !== null) {
       this.profileService.getPhoto().subscribe(value => {
         console.log(value[0] !== undefined);
         if (value[0] !== undefined) {
-          this.photoName = value[0].name;
-          this.photoKey = value[0].$key;
-          this.photoURL = value[0].url;
-          console.log(this.photoURL);
+          if (value.length === 0 || value.length === 1) {
+            this.photoURL = value[0];
+          } else {
+            this.photoName = value[0];
+            this.photoURL = value[1];
+          }
         }
       });
     }
@@ -54,9 +56,9 @@ export class ProfileComponent implements OnInit {
     this.selectedFiles = ($event.target as HTMLInputElement).files;
   }
 
-  updatePhoto() { 
-    if ((this.photoName !== undefined) && (this.photoKey !== undefined)) {
-      this.profileService.deletePhoto(this.photoName, this.photoKey);
+  updatePhoto() {
+    if (this.photoName !== undefined) {
+      this.profileService.deletePhoto(this.photoName);
     }
     const file = this.selectedFiles;
     if (file && file.length === 1) {

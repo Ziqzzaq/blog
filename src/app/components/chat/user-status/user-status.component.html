@@ -2,18 +2,18 @@
 
 
     <span *ngSwitchCase="'online'" class="help online">
-      <img src={{user.url}} alt="">
+      <img src={{user.photo.url}} alt="">
       {{user.name}} Online <i class="fa fa-circle"></i>
     </span>
 
 
     <span *ngSwitchCase="'offline'" class="help offline">
-      <img src={{user.url}} alt="">
+      <img src={{user.photo.url}} alt="">
       {{user.name}} Offline <i class="fa fa-circle"></i>
     </span>
 
     <span *ngSwitchCase="'away'" class="help away">
-      <img src={{user.url}} alt="">
+      <img src={{user.photo.url}} alt="">
       {{user.name}} Away <i class="fa fa-circle"></i>
     </span>
 

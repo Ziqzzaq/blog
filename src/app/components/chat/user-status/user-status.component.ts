@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ChatService} from '../../../services/chat.service';
 
 @Component({
   selector: 'app-user-status',
@@ -9,7 +8,7 @@ import {ChatService} from '../../../services/chat.service';
 export class UserStatusComponent implements OnInit {
   @Input() user;
 
-  constructor(private chatService: ChatService) {}
+  constructor() {}
 
   ngOnInit() {
   }

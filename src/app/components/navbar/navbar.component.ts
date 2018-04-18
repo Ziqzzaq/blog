@@ -20,10 +20,13 @@ export class NavbarComponent implements OnInit {
       if (this.user !== null) {
         this.profileService.getPhoto()
           .subscribe(photo => {
-            if (photo.length === 0) {
-              photo.push({url: this.photoURL});
+            console.log(photo);
+            if (photo.length === 0 || photo.length === 1) {
+              photo.push(this.photoURL);
+              this.photos = Observable.of([photo[0]]);
+            } else {
+              this.photos = Observable.of([photo[1]]);
             }
-            this.photos = Observable.of(photo);
           });
       }
     });
