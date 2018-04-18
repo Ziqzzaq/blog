@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ArticleService } from '../../services/article.service';
 import { Article } from '../../models/article';
-import { Routes, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 import { AuthService } from '../../auth/auth.service';
 
@@ -14,7 +14,6 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class AddArticleComponent implements OnInit, OnDestroy {
   rForm: FormGroup;
-  post: any; // A property for our submitted form
   description = '';
   name = '';
   content  = '';
@@ -24,7 +23,6 @@ export class AddArticleComponent implements OnInit, OnDestroy {
   artDescription = '';
   artContent = '';
   artId: any;
-  artViews = 0;
   userName: string = this.authService.user.displayName;
 
   constructor(
@@ -91,9 +89,6 @@ export class AddArticleComponent implements OnInit, OnDestroy {
       this.artContent = article.content;
       this.artId = article._id.$oid;
       this.userName = article.userName;
-      // console.log('works!');
-      // console.log(this.artDescription)
-      // console.log(this.artContent)
     }
   }
 }

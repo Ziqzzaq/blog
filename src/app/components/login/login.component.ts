@@ -17,9 +17,4 @@ export class LoginComponent implements OnInit {
   login(formData: NgForm) {
     this.authService.login(formData.value.email, formData.value.password);
   }
-
-
-  loginInAnonymously() {
-    this.authService.loginInAnonymously();
-  }
 }

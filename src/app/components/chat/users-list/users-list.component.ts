@@ -21,8 +21,6 @@ export class UsersListComponent implements OnInit {
       console.log(value);
     });
   }
-
-
   online() {
     this.authService.updateStatus('online');
   }

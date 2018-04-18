@@ -83,7 +83,6 @@ export class AuthService {
       });
   }
 
-
   addUser(email: string, password: string, name: string) {
     this.angularFire.auth
       .createUserWithEmailAndPassword(email, password)

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/empty';
-import { Routes, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpService {
@@ -16,7 +16,6 @@ export class HttpService {
     'aBvH1fu7xyds2qPrYtqVOudRGQjwjMWc'
   );
 
-  id: any;
   constructor(private http: HttpClient, private router: Router) {
     this.getArticles();
   }
